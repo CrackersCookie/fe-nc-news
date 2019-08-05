@@ -21,6 +21,7 @@ class App extends Component {
         <Router>
           <HomePage path="/" />
           <ArticlesListPage path="/articles" />
+          <ArticlesListPage path="/topics/:topic" />
         </Router>
       </div>
     );
