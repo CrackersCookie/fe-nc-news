@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "@reach/router";
 import styles from './Nav.module.css';
+import NavTopicsButtons from './NavTopicsButtons';
 
 class Nav extends Component {
   state = {
@@ -11,6 +12,7 @@ class Nav extends Component {
     return (
       <nav className={styles.nav}>
         <Link to="/">Home</Link>
+        <NavTopicsButtons />
       </nav>
     );
   }

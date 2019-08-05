@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ArticleCard from './ArticleCard';
 import * as api from "./api";
+import styles from './Articles.module.css';
 
 class Articles extends Component {
   state = {
@@ -11,7 +12,7 @@ class Articles extends Component {
   render() {
     const { articles, isLoading } = this.state
     return (
-      <section>
+      <section className={styles.articlesList}>
         <h1>Articles</h1>
         {isLoading ? <p>is loading.....</p> : <ArticleCard articles={articles} />}
       </section>

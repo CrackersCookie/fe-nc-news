@@ -1,0 +1,12 @@
+.article {
+  border: solid rgb(241, 239, 224);
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px
+}
+
+ul {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
