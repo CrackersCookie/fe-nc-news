@@ -6,13 +6,15 @@ const ArticleCard = (props) => {
   return (
     <ul>
       {articles.map(article => {
-        const { title, author, body, created_at } = article
+        const { title, author, body, created_at, votes, comment_count } = article
         return (
           <li key={title} className={styles.article}>
             <h3>{title}</h3>
             <p>{body}</p>
-            <p>{author}</p>
-            <p>{created_at}</p>
+            <p>Author: {author}</p>
+            <p>Date: {created_at}</p>
+            <p>Votes: {votes}</p>
+            <p>Comments: {comment_count}</p>
           </li>
         )
       })}

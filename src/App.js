@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Router } from "@reach/router";
-import Header from './components/Header';
-import Nav from './components/Nav';
-import Articles from './components/Articles';
+import HomePage from './components/HomePage/HomePage';
+import Header from './components/Header/Header';
+import Nav from './components/Nav/Nav';
+import ArticlesListPage from './components/ArticlesListPage/ArticlesListPage';
 
 class App extends Component {
   state = {
@@ -18,8 +19,8 @@ class App extends Component {
         <Nav />
 
         <Router>
-          <Articles path="/" />
-          <Articles path="/articles" />
+          <HomePage path="/" />
+          <ArticlesListPage path="/articles" />
         </Router>
       </div>
     );

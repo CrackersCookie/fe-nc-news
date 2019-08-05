@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ArticleCard from './ArticleCard';
-import * as api from "./api";
-import styles from './Articles.module.css';
+import * as api from "../../api";
+import styles from './ArticlesListPage.module.css';
 
 class Articles extends Component {
   state = {
@@ -25,7 +25,7 @@ class Articles extends Component {
   }
 
   fetchArticles = () => {
-    api.getArticles().then(({ articles }) => {
+    api.getArticles().then((articles) => {
       this.setState({ articles, isLoading: false })
     })
   }
