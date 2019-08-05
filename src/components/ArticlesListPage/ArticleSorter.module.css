@@ -1,0 +1,8 @@
+.sort {
+  padding: 0.5rem;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 3px 3px 0px -3px rgba(241, 239, 224,0.1);
+  border-radius: 10px 10px 0px 0px;
+}
