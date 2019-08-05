@@ -21,3 +21,6 @@ export const getArticle = async (article_id) => {
   let { data: { article } } = await request.get(URL)
   return article
 }
+
+
+// GET /api/articles/:article_id/comments
