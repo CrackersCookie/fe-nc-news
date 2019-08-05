@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
+import { Router } from "@reach/router";
+import Header from './components/Header';
+import Nav from './components/Nav';
+import Articles from './components/Articles';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>MC-NEWS</h1>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    user: "jessjelly"
+  }
+
+  render() {
+    const { user } = this.state
+    return (
+      <div className="App">
+        <Header user={user} />
+        <Nav />
+
+        <Router>
+          <Articles path="/" />
+          <Articles path="/articles" />
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;
