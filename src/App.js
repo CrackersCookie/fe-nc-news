@@ -10,14 +10,15 @@ import ErrorDisplay from './components/ErrorDisplay';
 
 class App extends Component {
   state = {
-    username: "jessjelly"
+    username: "jessjelly",
+    avatar_url: "https://s-media-cache-ak0.pinimg.com/564x/39/62/ec/3962eca164e60cf46f979c1f57d4078b.jpg"
   }
 
   render() {
     const { username } = this.state
     return (
       <div className="App">
-        <Header username={username} />
+        <Header username={username} setSelectedUser={this.setSelectedUser} />
         <Nav />
 
         <Router>
@@ -29,6 +30,10 @@ class App extends Component {
         </Router>
       </div>
     );
+  }
+
+  setSelectedUser = ({ target }) => {
+    this.setState({ username: target.value })
   }
 }
 

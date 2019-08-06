@@ -16,6 +16,12 @@ export const getTopics = async () => {
   return topics
 }
 
+export const getUsers = async () => {
+  const URL = 'users'
+  let { data: { users } } = await request.get(URL)
+  return users
+}
+
 export const getArticle = async (article_id) => {
   const URL = `articles/${article_id}`
   let { data: { article } } = await request.get(URL)
@@ -41,7 +47,6 @@ export const deleteComment = async (comment_id) => {
 }
 
 export const deleteArticle = async (article_id) => {
-  console.log(article_id, '< -----')
   const URL = `articles/${article_id}`
   let { response } = await request.delete(URL)
   return response

@@ -1,11 +1,15 @@
 import React from 'react';
 import styles from './Header.module.css';
+import UserDropdownList from './UserDropdownList';
 
-const Header = (props) => {
+const Header = ({ username, setSelectedUser }) => {
   return (
     < header className={styles.header} >
       <h1>MC-NEWS</h1>
-      <h3>{props.username}</h3>
+      <div>
+        <h4>Logged in as: {username}</h4>
+        <UserDropdownList username={username} setSelectedUser={setSelectedUser} />
+      </div>
     </header >
   );
 };

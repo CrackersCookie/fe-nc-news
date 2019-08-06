@@ -3,6 +3,10 @@
   margin-left: auto;
   margin-right: auto;
   width: 70vw;
+  display: grid;
+  align-items: center;
+  text-align: center; 
+  grid-template-columns: ( minmax(200px, 1fr))
 }
 
 a {
