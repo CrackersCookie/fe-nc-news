@@ -3,4 +3,6 @@
   width: 100%;
   height: auto;
   margin: auto;
+  border: solid rgb(241, 239, 224);
+  padding: 0;
 }

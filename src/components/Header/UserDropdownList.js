@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as api from "../../api"
 import LoadingSpinner from '../LoadingSpinner';
 import UsersList from './UsersList';
+import styles from "./UserDropdownList.module.css"
 
 class UserDropdownList extends Component {
 
@@ -17,7 +18,7 @@ class UserDropdownList extends Component {
     return (
       <form>
         <label>select user: </label>
-        <select value={this.props.username} onChange={this.props.setSelectedUser}>
+        <select className={styles.select} value={this.props.username} onChange={this.props.setSelectedUser}>
           {users.map(user => {
             return <UsersList key={user.username} user={user} />
           })}

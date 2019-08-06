@@ -1,19 +1,6 @@
-.article {
-  border: solid rgb(241, 239, 224);
-  padding: 1rem;
-  margin-bottom: 0.5rem;
-  border-radius: 10px
-}
-
-ul {
-  margin: 0px;
-  padding: 0px;
-  list-style-type: none;
-}
-
 .button {
   font-size: 1em;
-  width: 8em;
+  width: 4em;
   padding: .6em 1.4em .5em .8em;
   border-radius: .5em;
   background-color: #fff;

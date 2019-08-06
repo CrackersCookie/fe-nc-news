@@ -15,7 +15,7 @@ const ArticleCard = ({ article }) => {
       <p>Votes: {votes}</p>
       <p>Comments: {comment_count}</p>
       <Link to={`/articles/${article_id}`}>
-        <button>read article</button>
+        <button className={styles.button}>read article</button>
       </Link>
     </li>
 

@@ -11,7 +11,7 @@ class AddComment extends Component {
       <>
         <h3>Add comment</h3>
         <form onSubmit={this.handleSubmit} className={styles.form}>
-          <textarea value={this.state.comment} onChange={this.handleTextChange} rows="4" cols="80" name="comment" className={styles.textArea} required></textarea>
+          <textarea value={this.state.comment} onChange={this.handleTextChange} rows="4" cols="80" name="comment" placeholder="Enter your comment here..." className={styles.textArea} required></textarea>
           {this.props.username && <p>logged in as: {`${this.props.username}`}</p>}
           <input type="submit" value="post comment" />
         </form>
