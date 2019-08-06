@@ -5,7 +5,7 @@ const Header = (props) => {
   return (
     < header className={styles.header} >
       <h1>MC-NEWS</h1>
-      <h3>{props.user}</h3>
+      <h3>{props.username}</h3>
     </header >
   );
 };

@@ -10,8 +10,8 @@ class AddComment extends Component {
       <>
         <h3>Add comment</h3>
         <form onSubmit={this.handleSubmit}>
-          <textarea onChange={this.handleTextChange} rows="4" cols="80" name="comment" required></textarea>
-          <p>logged in as: {`${this.props.user}`}</p>
+          <textarea value={this.state.comment} onChange={this.handleTextChange} rows="4" cols="80" name="comment" required></textarea>
+          {this.props.user && <p>logged in as: {`${this.props.user}`}</p>}
           <input type="submit" value="post comment" />
         </form>
       </>
@@ -23,11 +23,12 @@ class AddComment extends Component {
   }
 
   handleSubmit = (e) => {
-    const user = this.props
     const { comment } = this.state
+    const { username, article_id } = this.props
     e.preventDefault()
-    api.postComment({ user, body: comment }).then(({ comment }) => {
-      console.log(comment)
+    api.postComment({ username, body: comment, article_id }).then((comment) => {
+      this.props.addComment(comment)
+      this.setState({ comment: '' })
     })
   }
 

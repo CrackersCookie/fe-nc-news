@@ -9,21 +9,21 @@ import ArticlePage from './components/ArticlePage/ArticlePage';
 
 class App extends Component {
   state = {
-    user: "jessjelly"
+    username: "jessjelly"
   }
 
   render() {
-    const { user } = this.state
+    const { username } = this.state
     return (
       <div className="App">
-        <Header user={user} />
+        <Header username={username} />
         <Nav />
 
         <Router>
           <HomePage path="/" />
           <ArticlesListPage path="/articles" />
           <ArticlesListPage path="/topics/:topic" />
-          <ArticlePage path="/articles/:article_id" user={user} />
+          <ArticlePage path="/articles/:article_id" username={username} />
         </Router>
       </div>
     );

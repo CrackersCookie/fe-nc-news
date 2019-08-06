@@ -28,8 +28,8 @@ export const getComments = async (article_id) => {
   return comments
 }
 
-export const postComment = async (article_id) => {
+export const postComment = async ({ body, username, article_id }) => {
   const URL = `articles/${article_id}/comments`
-  let { data: { comment } } = await request.post(URL)
+  let { data: { comment } } = await request.post(URL, { username, body })
   return comment
 }
