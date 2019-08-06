@@ -4,7 +4,7 @@ import * as api from "../../api";
 import styles from './ArticlesListPage.module.css';
 import ArticleSorter from './ArticleSorter';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
-import Loader from 'react-loader-spinner'
+import LoadingSpinner from '../LoadingSpinner';
 
 
 class Articles extends Component {
@@ -19,12 +19,7 @@ class Articles extends Component {
       <section className={styles.articlesList}>
         <h1>Articles</h1>
         <ArticleSorter fetchArticles={this.fetchArticles} />
-        {isLoading ? <Loader
-          type="Circles"
-          color="#F1EFE0"
-          height={100}
-          width={100}
-        /> : <ArticleCard articles={articles} />}
+        {isLoading ? <LoadingSpinner /> : <ArticleCard articles={articles} />}
       </section>
     );
   }
