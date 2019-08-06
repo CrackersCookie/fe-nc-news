@@ -20,7 +20,11 @@ class Articles extends Component {
       <section className={styles.articlesList}>
         <h1>Articles</h1>
         <ArticleSorter fetchArticles={this.fetchArticles} />
-        <ArticleCard articles={articles} />
+        <ul>
+          {articles.map(article => {
+            return <ArticleCard article={article} />
+          })}
+        </ul>
       </section>
     );
   }
