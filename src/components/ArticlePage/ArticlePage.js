@@ -3,7 +3,7 @@ import * as api from "../../api"
 import ArticleLayout from './ArticleLayout';
 import styles from './ArticlePage.module.css';
 import LoadingSpinner from '../LoadingSpinner';
-import CommentCard from './CommentCard';
+import CommentList from './CommentList';
 import ErrorDisplay from '../ErrorDisplay';
 
 class ArticlePage extends Component {
@@ -22,9 +22,8 @@ class ArticlePage extends Component {
         <article className={styles.article}>
           <ArticleLayout article={article} />
         </article>
-        <section className={styles.comments}>
-          < CommentCard article_id={this.state.article.article_id} username={this.props.username} />
-        </section>
+
+        < CommentList article_id={this.state.article.article_id} username={this.props.username} />
       </>
     );
   }
