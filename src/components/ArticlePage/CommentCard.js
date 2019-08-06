@@ -1,17 +1,16 @@
 import React from 'react';
 import styles from "./CommentCard.module.css";
-import { Icon } from '@iconify/react';
-import trashAlt from '@iconify/icons-fa-regular/trash-alt';
+import DeleteButton from './DeleteButton';
 
-const CommentCard = ({ comment, username }) => {
+
+const CommentCard = ({ comment, username, removeFunction }) => {
   const { body, votes, author, created_at, comment_id } = comment
   const date = new Date(created_at).toLocaleDateString()
   let deleteButton = null;
 
   if (author === username) {
-    deleteButton = <button value={comment_id} onClick={() => { this.removeComment(comment_id) }} ><span><Icon icon={trashAlt} /></span></button>
+    deleteButton = <DeleteButton id={comment_id} removeFunction={removeFunction} />
   }
-
 
   return (
     <li key={comment_id} className={styles.comment}>

@@ -22,7 +22,6 @@ class ArticlePage extends Component {
         <article className={styles.article}>
           <ArticleLayout article={article} />
         </article>
-
         < CommentList article_id={this.state.article.article_id} username={this.props.username} />
       </>
     );

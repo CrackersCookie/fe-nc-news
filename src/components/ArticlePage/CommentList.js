@@ -20,7 +20,7 @@ class CommentList extends Component {
         <AddComment username={this.props.username} article_id={this.props.article_id} addComment={this.addComment} />
         < ul >
           {comments.map(comment => {
-            return <CommentCard comment={comment} username={this.props.username} />
+            return <CommentCard comment={comment} username={this.props.username} removeFunction={this.removeFunction} />
           })}
         </ul >
       </section>
@@ -44,7 +44,7 @@ class CommentList extends Component {
     })
   }
 
-  removeComment = (comment_id) => {
+  removeFunction = (comment_id) => {
     api.deleteComment(comment_id).then(() => {
       this.fetchComments();
     })
