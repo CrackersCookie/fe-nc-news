@@ -15,11 +15,12 @@ class Articles extends Component {
 
   render() {
     const { articles, isLoading } = this.state
+    if (isLoading) return <LoadingSpinner />
     return (
       <section className={styles.articlesList}>
         <h1>Articles</h1>
         <ArticleSorter fetchArticles={this.fetchArticles} />
-        {isLoading ? <LoadingSpinner /> : <ArticleCard articles={articles} />}
+        <ArticleCard articles={articles} />
       </section>
     );
   }

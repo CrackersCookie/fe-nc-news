@@ -13,19 +13,17 @@ class ArticlePage extends Component {
   }
   render() {
     const { article, isLoading } = this.state
+    if (isLoading) return <LoadingSpinner />
     return (
       <>
         <article className={styles.article}>
-          {isLoading ? <LoadingSpinner /> : <ArticleLayout article={article} />
-          }
+          <ArticleLayout article={article} />
         </article>
         <section>
           <AddComment user={this.props.user} />
         </section>
         <section className={styles.comments}>
-          {isLoading ? <LoadingSpinner /> : < CommentCard article_id={this.state.article.article_id} />
-          }
-
+          < CommentCard article_id={this.state.article.article_id} />
         </section>
       </>
     );

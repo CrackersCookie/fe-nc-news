@@ -11,26 +11,24 @@ class CommentCard extends Component {
 
   render() {
     const { comments, isLoading } = this.state
+    if (isLoading) return <LoadingSpinner />
     return (
-      <>
-        {isLoading ? <LoadingSpinner /> :
-          < ul >
-            {
-              comments.map(comment => {
-                const { body, votes, author, created_at, comment_id } = comment
-                const date = new Date(created_at).toLocaleDateString()
-                return (
-                  <li key={comment_id} className={styles.comment}>
-                    <p>{body}</p>
-                    <p>Author: {author}</p>
-                    <p>Date: {date}</p>
-                    <p>Votes: {votes}</p>
-                  </li>
-                )
-              })
-            }
-          </ul >}
-      </>
+      < ul >
+        {
+          comments.map(comment => {
+            const { body, votes, author, created_at, comment_id } = comment
+            const date = new Date(created_at).toLocaleDateString()
+            return (
+              <li key={comment_id} className={styles.comment}>
+                <p>{body}</p>
+                <p>Author: {author}</p>
+                <p>Date: {date}</p>
+                <p>Votes: {votes}</p>
+              </li>
+            )
+          })
+        }
+      </ul >
     );
   };
 
