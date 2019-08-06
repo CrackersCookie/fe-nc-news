@@ -3,6 +3,9 @@ import styles from "./CommentCard.module.css";
 import * as api from "../../api";
 import LoadingSpinner from '../LoadingSpinner';
 import AddComment from './AddComment';
+import { Icon, InlineIcon } from '@iconify/react';
+import trashAlt from '@iconify/icons-fa-regular/trash-alt';
+
 
 class CommentCard extends Component {
   state = {
@@ -27,6 +30,7 @@ class CommentCard extends Component {
                   <p>Author: {author}</p>
                   <p>Date: {date}</p>
                   <p>Votes: {votes}</p>
+                  <Icon icon={trashAlt} />
                 </li>
               )
             })
@@ -56,3 +60,6 @@ class CommentCard extends Component {
 };
 
 export default CommentCard;
+
+
+
