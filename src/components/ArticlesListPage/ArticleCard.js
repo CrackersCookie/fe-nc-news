@@ -7,7 +7,7 @@ const ArticleCard = ({ article }) => {
   const date = new Date(created_at).toLocaleDateString()
 
   return (
-    <li key={title} className={styles.article}>
+    <li className={styles.article}>
       <h3>{title}</h3>
       <p>{body}</p>
       <p>Author: {author}</p>

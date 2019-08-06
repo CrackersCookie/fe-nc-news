@@ -23,7 +23,7 @@ class CommentList extends Component {
         <AddComment username={this.props.username} article_id={this.props.article_id} addComment={this.addComment} />
         < ul >
           {comments.map(comment => {
-            return <CommentCard comment={comment} username={this.props.username} removeFunction={this.removeFunction} />
+            return <CommentCard key={comment.comment_id} comment={comment} username={this.props.username} removeFunction={this.removeFunction} />
           })}
         </ul >
       </section>
@@ -37,9 +37,6 @@ class CommentList extends Component {
   fetchComments = () => {
     api.getComments(this.props.article_id).then(comments => {
       this.setState({ comments, isLoading: false })
-    }).catch(({ response }) => {
-      const error = { status: response.status, msg: response.data.msg }
-      this.setState({ error, isLoading: false })
     })
   }
 
@@ -47,9 +44,6 @@ class CommentList extends Component {
     this.setState((currentState) => {
       const comments = [comment, ...currentState.comments]
       return { comments }
-    }).catch(({ response }) => {
-      const error = { status: response.status, msg: response.data.msg }
-      this.setState({ error, isLoading: false })
     })
   }
 

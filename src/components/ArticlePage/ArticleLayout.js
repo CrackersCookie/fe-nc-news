@@ -4,7 +4,6 @@ import DeleteButton from './DeleteButton';
 const ArticleLayout = ({ article, username, removeFunction }) => {
   const { title, body, votes, author, created_at, comment_count, article_id, topic } = article
   const date = new Date(created_at).toLocaleDateString()
-  console.log(topic)
   return (
     <>
       <h3>{title}</h3>

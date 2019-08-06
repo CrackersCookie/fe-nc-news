@@ -3,15 +3,18 @@ import { Link } from "@reach/router";
 import styles from './Nav.module.css';
 import NavTopicsButtons from './NavTopicsButtons';
 import * as api from "../../api";
+import ErrorDisplay from '../ErrorDisplay';
 
 class Nav extends Component {
   state = {
     topics: null,
-    isLoading: true
+    isLoading: true,
+    error: null
   }
 
   render() {
-    const { topics, isLoading } = this.state
+    const { topics, isLoading, error } = this.state
+    if (error) return <ErrorDisplay status={error.status} msg={error.msg} />
     return (
       <nav className={styles.nav}>
         <Link to="/">Home</Link>
@@ -29,6 +32,9 @@ class Nav extends Component {
   fetchTopics = () => {
     api.getTopics().then(topics => {
       this.setState({ topics, isLoading: false })
+    }).catch(({ response }) => {
+      const error = { status: response.status, msg: response.data.msg }
+      this.setState({ error, isLoading: false })
     })
   }
 }
