@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as api from "../../api"
+import styles from './AddComment.module.css';
 
 class AddComment extends Component {
   state = {
@@ -9,8 +10,8 @@ class AddComment extends Component {
     return (
       <>
         <h3>Add comment</h3>
-        <form onSubmit={this.handleSubmit}>
-          <textarea value={this.state.comment} onChange={this.handleTextChange} rows="4" cols="80" name="comment" required></textarea>
+        <form onSubmit={this.handleSubmit} className={styles.form}>
+          <textarea value={this.state.comment} onChange={this.handleTextChange} rows="4" cols="80" name="comment" className={styles.textArea} required></textarea>
           {this.props.username && <p>logged in as: {`${this.props.username}`}</p>}
           <input type="submit" value="post comment" />
         </form>

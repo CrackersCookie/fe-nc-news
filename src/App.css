@@ -3,10 +3,10 @@
   margin-left: auto;
   margin-right: auto;
   width: 70vw;
-  display: grid;
+  display: grids;
   align-items: center;
   text-align: center; 
-  grid-template-columns: ( minmax(200px, 1fr))
+  grid-template-columns: 1fr;
 }
 
 a {
@@ -16,4 +16,18 @@ a {
 
 body {
   background-color: rgb(241, 239, 224)
+}
+
+
+@media (max-width:600px) {
+.App {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100vw;
+  display: grid;
+  align-items: center;
+  text-align: center; 
+  grid-template-columns: 1fr;
+}
 }
