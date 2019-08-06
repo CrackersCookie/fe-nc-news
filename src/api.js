@@ -33,3 +33,9 @@ export const postComment = async ({ body, username, article_id }) => {
   let { data: { comment } } = await request.post(URL, { username, body })
   return comment
 }
+
+export const deleteComment = async (comment_id) => {
+  const URL = `/comments/${comment_id}`
+  let { response } = await request.delete(URL)
+  return response
+}

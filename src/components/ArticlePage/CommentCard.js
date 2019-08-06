@@ -24,13 +24,19 @@ class CommentCard extends Component {
             comments.map(comment => {
               const { body, votes, author, created_at, comment_id } = comment
               const date = new Date(created_at).toLocaleDateString()
+              let deleteButton = null;
+
+              if (author === this.props.username) {
+                deleteButton = <button value={comment_id} onClick={() => { this.removeComment(comment_id) }} ><span><Icon icon={trashAlt} /></span></button>
+              }
+
               return (
                 <li key={comment_id} className={styles.comment}>
                   <p>{body}</p>
                   <p>Author: {author}</p>
                   <p>Date: {date}</p>
                   <p>Votes: {votes}</p>
-                  <Icon icon={trashAlt} />
+                  {deleteButton}
                 </li>
               )
             })
@@ -54,6 +60,12 @@ class CommentCard extends Component {
     this.setState((currentState) => {
       const comments = [comment, ...currentState.comments]
       return { comments }
+    })
+  }
+
+  removeComment = (comment_id) => {
+    api.deleteComment(comment_id).then(() => {
+      this.fetchComments();
     })
   }
 

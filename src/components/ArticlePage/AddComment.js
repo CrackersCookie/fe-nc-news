@@ -31,8 +31,6 @@ class AddComment extends Component {
       this.setState({ comment: '' })
     })
   }
-
-
 }
 
 export default AddComment;
