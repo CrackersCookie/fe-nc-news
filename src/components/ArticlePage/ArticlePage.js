@@ -5,6 +5,7 @@ import styles from './ArticlePage.module.css';
 import LoadingSpinner from '../LoadingSpinner';
 import CommentList from './CommentList';
 import ErrorDisplay from '../ErrorDisplay';
+import { navigate } from "@reach/router";
 
 class ArticlePage extends Component {
   state = {
@@ -20,7 +21,7 @@ class ArticlePage extends Component {
     return (
       <>
         <article className={styles.article}>
-          <ArticleLayout article={article} />
+          <ArticleLayout article={article} username={this.props.username} removeFunction={this.removeFunction} />
         </article>
         < CommentList article_id={this.state.article.article_id} username={this.props.username} />
       </>
@@ -34,6 +35,15 @@ class ArticlePage extends Component {
   fetchArticle = () => {
     api.getArticle(this.props.article_id).then(article => {
       this.setState({ article, isLoading: false })
+    }).catch(({ response }) => {
+      const error = { status: response.status, msg: response.data.msg }
+      this.setState({ error, isLoading: false })
+    })
+  }
+
+  removeFunction = (article_id, topic) => {
+    api.deleteArticle(article_id).then(() => {
+      navigate(`/topics/${topic}`)
     }).catch(({ response }) => {
       const error = { status: response.status, msg: response.data.msg }
       this.setState({ error, isLoading: false })

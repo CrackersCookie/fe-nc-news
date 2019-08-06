@@ -4,17 +4,20 @@ import * as api from "../../api";
 import LoadingSpinner from '../LoadingSpinner';
 import AddComment from './AddComment';
 import CommentCard from './CommentCard';
+import ErrorDisplay from '../ErrorDisplay';
 
 
 class CommentList extends Component {
   state = {
     comments: null,
-    isLoading: true
+    isLoading: true,
+    error: null
   }
 
   render() {
-    const { comments, isLoading } = this.state
+    const { comments, isLoading, error } = this.state
     if (isLoading) return <LoadingSpinner />
+    if (error) return <ErrorDisplay status={error.status} msg={error.msg} />
     return (
       <section className={styles.comments}>
         <AddComment username={this.props.username} article_id={this.props.article_id} addComment={this.addComment} />
@@ -34,6 +37,9 @@ class CommentList extends Component {
   fetchComments = () => {
     api.getComments(this.props.article_id).then(comments => {
       this.setState({ comments, isLoading: false })
+    }).catch(({ response }) => {
+      const error = { status: response.status, msg: response.data.msg }
+      this.setState({ error, isLoading: false })
     })
   }
 
@@ -41,12 +47,18 @@ class CommentList extends Component {
     this.setState((currentState) => {
       const comments = [comment, ...currentState.comments]
       return { comments }
+    }).catch(({ response }) => {
+      const error = { status: response.status, msg: response.data.msg }
+      this.setState({ error, isLoading: false })
     })
   }
 
   removeFunction = (comment_id) => {
     api.deleteComment(comment_id).then(() => {
       this.fetchComments();
+    }).catch(({ response }) => {
+      const error = { status: response.status, msg: response.data.msg }
+      this.setState({ error, isLoading: false })
     })
   }
 

@@ -39,3 +39,10 @@ export const deleteComment = async (comment_id) => {
   let { response } = await request.delete(URL)
   return response
 }
+
+export const deleteArticle = async (article_id) => {
+  console.log(article_id, '< -----')
+  const URL = `articles/${article_id}`
+  let { response } = await request.delete(URL)
+  return response
+}

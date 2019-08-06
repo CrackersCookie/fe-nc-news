@@ -6,11 +6,7 @@ import DeleteButton from './DeleteButton';
 const CommentCard = ({ comment, username, removeFunction }) => {
   const { body, votes, author, created_at, comment_id } = comment
   const date = new Date(created_at).toLocaleDateString()
-  let deleteButton = null;
 
-  if (author === username) {
-    deleteButton = <DeleteButton id={comment_id} removeFunction={removeFunction} />
-  }
 
   return (
     <li key={comment_id} className={styles.comment}>
@@ -18,7 +14,7 @@ const CommentCard = ({ comment, username, removeFunction }) => {
       <p>Author: {author}</p>
       <p>Date: {date}</p>
       <p>Votes: {votes}</p>
-      {deleteButton}
+      {author === username ? <DeleteButton id={comment_id} removeFunction={removeFunction} /> : <></>}
     </li>
   );
 };
