@@ -9,23 +9,23 @@ import AddComment from './AddComment';
 class ArticlePage extends Component {
   state = {
     article: null,
-    isLoadingArticle: true,
-    comments: null,
-    isLoadingComments: true
+    isLoading: true,
   }
   render() {
-    const { article, isLoadingArticle, comments, isLoadingComments } = this.state
+    const { article, isLoading } = this.state
     return (
       <>
         <article className={styles.article}>
-          {isLoadingArticle ? <LoadingSpinner /> : <ArticleLayout article={article} />
+          {isLoading ? <LoadingSpinner /> : <ArticleLayout article={article} />
           }
         </article>
         <section>
           <AddComment user={this.props.user} />
         </section>
         <section className={styles.comments}>
-          {isLoadingComments ? <LoadingSpinner /> : <CommentCard comments={comments} />}
+          {isLoading ? <LoadingSpinner /> : < CommentCard article_id={this.state.article.article_id} />
+          }
+
         </section>
       </>
     );
@@ -33,20 +33,14 @@ class ArticlePage extends Component {
 
   componentDidMount() {
     this.fetchArticle();
-    this.fetchComments();
   }
 
   fetchArticle = () => {
     api.getArticle(this.props.article_id).then(article => {
-      this.setState({ article, isLoadingArticle: false })
+      this.setState({ article, isLoading: false })
     })
   }
 
-  fetchComments = () => {
-    api.getComments(this.props.article_id).then(comments => {
-      this.setState({ comments, isLoadingComments: false })
-    })
-  }
 }
 
 
