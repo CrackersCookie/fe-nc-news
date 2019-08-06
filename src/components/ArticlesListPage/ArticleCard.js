@@ -2,8 +2,7 @@ import React from 'react';
 import styles from './ArticleCard.module.css';
 import { Link } from "@reach/router";
 
-const ArticleCard = (props) => {
-  const { articles } = props
+const ArticleCard = ({ articles }) => {
   return (
     <ul>
       {articles.map(article => {

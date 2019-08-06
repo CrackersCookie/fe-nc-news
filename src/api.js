@@ -22,5 +22,14 @@ export const getArticle = async (article_id) => {
   return article
 }
 
+export const getComments = async (article_id) => {
+  const URL = `articles/${article_id}/comments`
+  let { data: { comments } } = await request.get(URL)
+  return comments
+}
 
-// GET /api/articles/:article_id/comments
+export const postComment = async (article_id) => {
+  const URL = `articles/${article_id}/comments`
+  let { data: { comment } } = await request.post(URL)
+  return comment
+}

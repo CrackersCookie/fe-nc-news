@@ -23,7 +23,7 @@ class App extends Component {
           <HomePage path="/" />
           <ArticlesListPage path="/articles" />
           <ArticlesListPage path="/topics/:topic" />
-          <ArticlePage path="/articles/:article_id" />
+          <ArticlePage path="/articles/:article_id" user={user} />
         </Router>
       </div>
     );
