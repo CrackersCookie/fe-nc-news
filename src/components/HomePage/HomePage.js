@@ -1,5 +1,5 @@
-import React from 'react';
-import ArticlesListPage from '../ArticlesListPage/ArticlesListPage.js';
+import React from "react";
+import ArticlesListPage from "../ArticlesListPage/ArticlesListPage.js";
 
 const HomePage = () => {
   return (

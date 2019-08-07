@@ -1,9 +1,7 @@
-import React from 'react';
+import React from "react";
 
-const UserList = ({ user }) => {
-  return (
-    <option value={user.username}>{user.username}</option>
-  );
+const UserList = ({ user: { username } }) => {
+  return <option value={username}>{username}</option>;
 };
 
 export default UserList;

@@ -1,25 +1,31 @@
-import React, { Component } from 'react';
-import * as api from "../../api"
-import LoadingSpinner from '../LoadingSpinner';
-import UsersList from './UsersList';
-import styles from "./UserDropdownList.module.css"
+import React, { Component } from "react";
+import * as api from "../../api";
+import LoadingSpinner from "../LoadingSpinner";
+import UsersList from "./UsersList";
+import styles from "./UserDropdownList.module.css";
 
 class UserDropdownList extends Component {
-
   state = {
     users: null,
     isLoading: true
-  }
+  };
 
   render() {
-    const { users, isLoading } = this.state
-    if (isLoading) return <LoadingSpinner />
+    const { users, isLoading } = this.state;
+    const { username, setSelectedUser } = this.props;
+    if (isLoading) return <LoadingSpinner />;
+
     return (
       <form>
         <label>select user: </label>
-        <select className={styles.select} value={this.props.username} onChange={this.props.setSelectedUser}>
+        <select
+          className={styles.select}
+          value={username}
+          onChange={setSelectedUser}
+        >
           {users.map(user => {
-            return <UsersList key={user.username} user={user} />
+            console.log(user);
+            return <UsersList key={user.username} user={user} />;
           })}
         </select>
       </form>
@@ -31,9 +37,8 @@ class UserDropdownList extends Component {
   }
 
   fetchUsers = () => {
-    api.getUsers().then(users =>
-      this.setState({ users, isLoading: false }))
-  }
+    api.getUsers().then(users => this.setState({ users, isLoading: false }));
+  };
 }
 
 export default UserDropdownList;
