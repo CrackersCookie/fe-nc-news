@@ -5,6 +5,7 @@ const request = Axios.create({
 });
 
 export const getArticles = async queries => {
+  console.log(queries);
   const URL = "articles";
   let {
     data: { articles }

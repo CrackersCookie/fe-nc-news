@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./Header.module.css";
 import UserDropdownList from "./UserDropdownList";
+import { Icon } from "@iconify/react";
+import userIcon from "@iconify/icons-fa-regular/user";
 
 const Header = ({ username, setSelectedUser }) => {
   return (
@@ -9,10 +11,16 @@ const Header = ({ username, setSelectedUser }) => {
       <div>
         {username && (
           <>
-            <button value={null} onClick={e => setSelectedUser(e)}>
+            <button
+              className={styles.button}
+              value={null}
+              onClick={e => setSelectedUser(e)}
+            >
               log out
             </button>
-            <h4>Logged in as: {username}</h4>{" "}
+            <h5>
+              <Icon icon={userIcon} /> {username}
+            </h5>
           </>
         )}
         <UserDropdownList

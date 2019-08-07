@@ -9,6 +9,7 @@ const DeleteButton = ({ id, removeFunction, topic }) => {
       className={styles.button}
       value={id}
       onClick={() => {
+        console.log(id, topic);
         removeFunction(id, topic);
       }}
     >

@@ -58,7 +58,7 @@ class ArticlesListPage extends Component {
 
   fetchArticles = query => {
     const { path, topic } = this.props;
-    if (!path) query = { sort_by: "votes", order: "desc", limit: 3 };
+    if (!path) query = { sort_by: "created_at", order: "desc", limit: 3 };
 
     const queries = { topic, ...query };
     api

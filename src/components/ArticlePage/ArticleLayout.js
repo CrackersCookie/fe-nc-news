@@ -1,5 +1,8 @@
 import React from "react";
 import DeleteButton from "./DeleteButton";
+import { Icon } from "@iconify/react";
+import userIcon from "@iconify/icons-fa-regular/user";
+import commentAltMessage from "@iconify/icons-uil/comment-alt-message";
 
 const ArticleLayout = ({ article, username, removeFunction }) => {
   const {
@@ -19,9 +22,13 @@ const ArticleLayout = ({ article, username, removeFunction }) => {
       <h3>{title}</h3>
       <p>{body}</p>
       <p>Votes: {votes}</p>
-      <p>Author: {author}</p>
+      <p>
+        <Icon icon={userIcon} /> {author}
+      </p>
       <p>Date: {date}</p>
-      <p>comment count: {comment_count}</p>
+      <p>
+        <Icon icon={commentAltMessage} flip="horizontal" /> {comment_count}
+      </p>
       {author === username ? (
         <DeleteButton
           id={article_id}

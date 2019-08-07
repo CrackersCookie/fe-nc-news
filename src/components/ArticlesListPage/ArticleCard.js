@@ -2,6 +2,9 @@ import React from "react";
 import styles from "./ArticleCard.module.css";
 import { Link } from "@reach/router";
 import Voter from "../Voter";
+import { Icon } from "@iconify/react";
+import userIcon from "@iconify/icons-fa-regular/user";
+import commentAltMessage from "@iconify/icons-uil/comment-alt-message";
 
 const ArticleCard = ({ article }) => {
   const {
@@ -19,10 +22,14 @@ const ArticleCard = ({ article }) => {
     <li className={styles.article}>
       <h3>{title}</h3>
       <p>{body}</p>
-      <p>Author: {author}</p>
+      <p>
+        <Icon icon={userIcon} /> {author}
+      </p>
       <p>Date: {date}</p>
       <Voter votes={votes} article_id={article_id} />
-      <p>Comments: {comment_count}</p>
+      <p>
+        <Icon icon={commentAltMessage} flip="horizontal" /> {comment_count}
+      </p>
       <Link to={`/articles/${article_id}`}>
         <button className={styles.button}>read article</button>
       </Link>

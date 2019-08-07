@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./CommentCard.module.css";
 import DeleteButton from "./DeleteButton";
 import Voter from "../Voter";
+import { Icon } from "@iconify/react";
+import userIcon from "@iconify/icons-fa-regular/user";
 
 const CommentCard = ({ comment, username, removeFunction }) => {
   const { body, votes, author, created_at, comment_id } = comment;
@@ -10,7 +12,9 @@ const CommentCard = ({ comment, username, removeFunction }) => {
   return (
     <li key={comment_id} className={styles.comment}>
       <p>{body}</p>
-      <p>Author: {author}</p>
+      <p>
+        <Icon icon={userIcon} /> {author}
+      </p>
       <p>Date: {date}</p>
       <Voter votes={votes} comment_id={comment_id} />
       {author === username && (
