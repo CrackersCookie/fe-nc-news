@@ -17,7 +17,6 @@ class ArticlesListPage extends Component {
 
 
   render() {
-    console.log(this.props, 'props')
     const { articles, isLoading, error } = this.state
     if (isLoading) return <LoadingSpinner />
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />
