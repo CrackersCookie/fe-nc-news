@@ -8,6 +8,7 @@ import ArticlesListPage from "./components/ArticlesListPage/ArticlesListPage";
 import ArticlePage from "./components/ArticlePage/ArticlePage";
 import ErrorDisplay from "./components/ErrorDisplay";
 import CreateArticlePage from "./components/CreateArticlePage/CreateArticlePage";
+import Footer from "./components/Footer";
 
 class App extends Component {
   state = {
@@ -29,6 +30,8 @@ class App extends Component {
           <CreateArticlePage path="/article" username={username} />
           <ErrorDisplay default status={404} msg={"Route not found"} />
         </Router>
+
+        <Footer />
       </div>
     );
   }
