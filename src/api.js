@@ -53,7 +53,7 @@ export const deleteArticle = async (article_id) => {
 }
 
 export const updateVotes = async (article_id, inc_votes) => {
-  const URL = `articles/${article_id}`
+  const URL = `article/${article_id}`
   let { response } = await request.patch(URL, { inc_votes })
   return response
 }
