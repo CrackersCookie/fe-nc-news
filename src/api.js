@@ -51,3 +51,10 @@ export const deleteArticle = async (article_id) => {
   let { response } = await request.delete(URL)
   return response
 }
+
+export const updateVotes = async (article_id, inc_votes) => {
+  const URL = `articles/${article_id}`
+  let { response } = await request.patch(URL, { inc_votes })
+  return response
+}
+
