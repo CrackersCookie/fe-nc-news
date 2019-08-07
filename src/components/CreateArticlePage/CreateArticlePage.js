@@ -1,11 +1,12 @@
 import React from 'react';
 import CreateArticleForm from './CreateArticleForm';
 
-const CreateArticlePage = () => {
+const CreateArticlePage = ({ username }) => {
+
   return (
     <section>
       <h1>Create Article</h1>
-      <CreateArticleForm />
+      <CreateArticleForm username={username} />
     </section>
   );
 }

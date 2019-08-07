@@ -23,10 +23,10 @@ class App extends Component {
 
         <Router>
           <HomePage path="/" />
-          <ArticlesListPage path="/articles" />
+          <ArticlesListPage path="/articles" username={username} />
           <ArticlesListPage path="/topics/:topic" />
           <ArticlePage path="/articles/:article_id" username={username} />
-          <CreateArticlePage path="/article" />
+          <CreateArticlePage path="/article" username={username} />
           <ErrorDisplay default status={404} msg={'Route not found'} />
         </Router>
       </div>
