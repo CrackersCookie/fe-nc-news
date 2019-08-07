@@ -7,8 +7,9 @@ const Header = ({ username, setSelectedUser }) => {
     < header className={styles.header} >
       <h1>MC-NEWS</h1>
       <div>
-        <button value={null} onClick={(e) => setSelectedUser(e)}>log out</button>
-        <h4>Logged in as: {username}</h4>
+        {username ? <>
+          <button value={null} onClick={(e) => setSelectedUser(e)}>log out</button>
+          <h4>Logged in as: {username}</h4> </> : <></>}
         <UserDropdownList username={username} setSelectedUser={setSelectedUser} />
       </div>
     </header >
