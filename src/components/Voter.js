@@ -4,6 +4,7 @@ import triangleUp from "@iconify/icons-octicon/triangle-up";
 import triangleDown from "@iconify/icons-octicon/triangle-down";
 import * as api from "../api";
 import styles from "./Voter.module.css";
+import thumbsUp from "@iconify/icons-fa-regular/thumbs-up";
 
 class Voter extends Component {
   state = {
@@ -23,7 +24,9 @@ class Voter extends Component {
         >
           {<Icon icon={triangleUp} />}
         </button>
-        <p>{votes + voteChange}</p>
+        <p>
+          <Icon icon={thumbsUp} /> {votes + voteChange}
+        </p>
         <button
           className={styles.button}
           onClick={() => this.handleVotes(-1)}

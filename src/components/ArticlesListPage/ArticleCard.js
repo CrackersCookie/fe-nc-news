@@ -5,6 +5,7 @@ import Voter from "../Voter";
 import { Icon } from "@iconify/react";
 import userIcon from "@iconify/icons-fa-regular/user";
 import commentAltMessage from "@iconify/icons-uil/comment-alt-message";
+import tearOffCalendar from "@iconify/icons-noto/tear-off-calendar";
 
 const ArticleCard = ({ article }) => {
   const {
@@ -25,7 +26,9 @@ const ArticleCard = ({ article }) => {
       <p>
         <Icon icon={userIcon} /> {author}
       </p>
-      <p>Date: {date}</p>
+      <p>
+        <Icon icon={tearOffCalendar} /> {date}
+      </p>
       <Voter votes={votes} article_id={article_id} />
       <p>
         <Icon icon={commentAltMessage} flip="horizontal" /> {comment_count}

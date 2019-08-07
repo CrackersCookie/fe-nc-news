@@ -4,6 +4,7 @@ import DeleteButton from "./DeleteButton";
 import Voter from "../Voter";
 import { Icon } from "@iconify/react";
 import userIcon from "@iconify/icons-fa-regular/user";
+import tearOffCalendar from "@iconify/icons-noto/tear-off-calendar";
 
 const CommentCard = ({ comment, username, removeFunction }) => {
   const { body, votes, author, created_at, comment_id } = comment;
@@ -15,7 +16,9 @@ const CommentCard = ({ comment, username, removeFunction }) => {
       <p>
         <Icon icon={userIcon} /> {author}
       </p>
-      <p>Date: {date}</p>
+      <p>
+        <Icon icon={tearOffCalendar} /> {date}
+      </p>
       <Voter votes={votes} comment_id={comment_id} />
       {author === username && (
         <DeleteButton id={comment_id} removeFunction={removeFunction} />
