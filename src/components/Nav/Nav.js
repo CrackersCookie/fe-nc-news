@@ -18,7 +18,7 @@ class Nav extends Component {
 
     return (
       <nav className={styles.nav}>
-        <Link to="/">Home</Link>
+        <Link to="/">home</Link>
         <Link to="/articles">all articles</Link>
         {isLoading ? (
           <p>topics loading....</p>

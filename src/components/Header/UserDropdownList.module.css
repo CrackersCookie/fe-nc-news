@@ -1,12 +1,11 @@
 .select {
-  display: block;
+  display: inline-block;
   font-size: 1rem;
   line-height: 1;
-  padding: 0.6em 1.4em 0.5em 0.8em;
-  width: 550%;
+  padding: 0.6em 0.5em 0.5em 0.5em;
+  width: 55%;
   max-width: 55%;
   box-sizing: border-box;
-  float: right;
   border: 1px solid #aaa;
   box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
   border-radius: 0.5em;
@@ -38,9 +37,14 @@
 }
 
 .label {
+  float: left;
+  padding: 0.6em 0.5em 0.5em 0.5em;
   font-size: 1rem;
 }
 
 .formSelectUser {
+  display: flex;
+  justify-content: space-between;
   margin: 0.2em 0.2em;
+  padding: 0.6em 0.5em 0.5em 0.5em;
 }

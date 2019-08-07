@@ -16,27 +16,36 @@ class ArticlesListPage extends Component {
   };
 
   render() {
+    console.log(this.props);
     const { articles, isLoading, error } = this.state;
-    const { path, location, username } = this.props;
+    const { path, location, username, topic } = this.props;
     if (isLoading) return <LoadingSpinner />;
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />;
     return (
       <section className={styles.articlesList}>
-        <h1>Articles</h1>
+        {topic ? (
+          <h1>{topic}</h1>
+        ) : path ? (
+          <h1>all articles</h1>
+        ) : (
+          <h1>most recent articles</h1>
+        )}
         {location && location.state.article_id && (
           <p className={styles.deleted}>Article succesfully deleted</p>
         )}
         {path && (
           <>
             {username && (
-              <button className={styles.buttonPost}>
-                <Link to="/article">Post Article</Link>
-              </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.buttonPost}>
+                  <Link to="/article">Post Article</Link>
+                </button>
+              </div>
             )}
             <ArticleSorter fetchArticles={this.fetchArticles} />
           </>
         )}
-        <ul>
+        <ul className={styles.unorderedList}>
           {articles.map(article => {
             return <ArticleCard key={article.article_id} article={article} />;
           })}
