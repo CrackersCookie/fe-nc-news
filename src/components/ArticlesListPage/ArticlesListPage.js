@@ -44,7 +44,7 @@ class ArticlesListPage extends Component {
   }
 
   fetchArticles = (query) => {
-    if (!this.props.path) query = { sort_by: "created_at", order: "desc", limit: 3 }
+    if (!this.props.path) query = { sort_by: "votes", order: "desc", limit: 3 }
     const queries = { topic: this.props.topic, ...query }
     api.getArticles(queries).then((articles) => {
       this.setState({ articles, isLoading: false })
