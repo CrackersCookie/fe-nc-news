@@ -14,7 +14,6 @@ class UserDropdownList extends Component {
   render() {
     const { users, isLoading } = this.state
     if (isLoading) return <LoadingSpinner />
-    console.log(this.props.username)
     return (
       <form>
         <label>select user: </label>

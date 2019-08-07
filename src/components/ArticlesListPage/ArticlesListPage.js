@@ -8,21 +8,23 @@ import LoadingSpinner from '../LoadingSpinner';
 import ErrorDisplay from '../ErrorDisplay';
 
 
-class Articles extends Component {
+class ArticlesListPage extends Component {
   state = {
     articles: null,
     isLoading: true,
     error: null
   }
 
+
   render() {
+    console.log(this.props, 'props')
     const { articles, isLoading, error } = this.state
     if (isLoading) return <LoadingSpinner />
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />
     return (
       <section className={styles.articlesList}>
         <h1>Articles</h1>
-        <ArticleSorter fetchArticles={this.fetchArticles} />
+        {this.props.path ? <ArticleSorter fetchArticles={this.fetchArticles} /> : <></>}
         <ul>
           {articles.map(article => {
             return <ArticleCard key={article.title} article={article} />
@@ -43,6 +45,7 @@ class Articles extends Component {
   }
 
   fetchArticles = (query) => {
+    if (!this.props.path) query = { sort_by: "created_at", order: "desc", limit: 3 }
     const queries = { topic: this.props.topic, ...query }
     api.getArticles(queries).then((articles) => {
       this.setState({ articles, isLoading: false })
@@ -54,4 +57,4 @@ class Articles extends Component {
 
 }
 
-export default Articles;
+export default ArticlesListPage;

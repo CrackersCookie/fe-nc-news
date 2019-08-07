@@ -5,6 +5,7 @@
   border-radius: .5em;
   background-color: #fff;
   border: 1px solid #aaa;
+  background-image: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
 }
 
 .button:hover {

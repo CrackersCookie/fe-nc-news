@@ -32,8 +32,8 @@ class App extends Component {
     );
   }
 
-  setSelectedUser = ({ target }) => {
-    this.setState({ username: target.value })
+  setSelectedUser = ({ target: { value } }) => {
+    this.setState({ username: value })
   }
 }
 
