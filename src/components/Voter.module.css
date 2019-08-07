@@ -1,0 +1,17 @@
+.button {
+  font-size: 1em;
+  padding: .5em;
+  border-radius: .5em;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  background-image: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+}
+
+.button:hover {
+  border: #fc683b;
+}
+
+.button:active {
+  background-color: #fc683b;
+}

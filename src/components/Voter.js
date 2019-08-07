@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Icon } from '@iconify/react';
-import downArrow from '@iconify/icons-emojione/down-arrow';
-import upArrow from '@iconify/icons-emojione/down-arrow';
+import triangleUp from '@iconify/icons-octicon/triangle-up';
+import triangleDown from '@iconify/icons-octicon/triangle-down';
 import * as api from "../api"
+import styles from "./Voter.module.css"
 
 
 class Voter extends Component {
@@ -15,9 +16,9 @@ class Voter extends Component {
     const { votes } = this.props
     return (
       <>
-        <button onClick={() => this.handleVotes(1)} disabled={(voteChange >= 1)}>{<Icon icon={upArrow} />}</button>
+        <button className={styles.button} onClick={() => this.handleVotes(1)} disabled={(voteChange >= 1)}>{<Icon icon={triangleUp} />}</button>
         <p>{votes + voteChange}</p>
-        <button onClick={() => this.handleVotes(-1)} disabled={(voteChange <= -1)}>{<Icon icon={downArrow} />}</button>
+        <button className={styles.button} onClick={() => this.handleVotes(-1)} disabled={(voteChange <= -1)}>{<Icon icon={triangleDown} />}</button>
       </>
     );
   }

@@ -57,4 +57,3 @@ export const updateVotes = async (article_id, comment_id, inc_votes) => {
   let { response } = await request.patch(URL, { inc_votes })
   return response
 }
-
