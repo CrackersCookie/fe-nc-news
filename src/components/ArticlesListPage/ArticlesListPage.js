@@ -26,10 +26,14 @@ class ArticlesListPage extends Component {
         {location && location.state.article_id && (
           <p className={styles.deleted}>Article succesfully deleted</p>
         )}
-        <button className={styles.buttonPost}>
-          <Link to="/article">Post Article</Link>
-        </button>
-        {path && <ArticleSorter fetchArticles={this.fetchArticles} />}
+        {path && (
+          <>
+            <button className={styles.buttonPost}>
+              <Link to="/article">Post Article</Link>
+            </button>
+            <ArticleSorter fetchArticles={this.fetchArticles} />
+          </>
+        )}
         <ul>
           {articles.map(article => {
             return <ArticleCard key={article.article_id} article={article} />;
