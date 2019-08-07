@@ -17,7 +17,7 @@ class ArticlesListPage extends Component {
 
   render() {
     const { articles, isLoading, error } = this.state;
-    const { path, location } = this.props;
+    const { path, location, username } = this.props;
     if (isLoading) return <LoadingSpinner />;
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />;
     return (
@@ -28,9 +28,11 @@ class ArticlesListPage extends Component {
         )}
         {path && (
           <>
-            <button className={styles.buttonPost}>
-              <Link to="/article">Post Article</Link>
-            </button>
+            {username && (
+              <button className={styles.buttonPost}>
+                <Link to="/article">Post Article</Link>
+              </button>
+            )}
             <ArticleSorter fetchArticles={this.fetchArticles} />
           </>
         )}
