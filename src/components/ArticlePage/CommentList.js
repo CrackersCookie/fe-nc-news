@@ -20,12 +20,16 @@ class CommentList extends Component {
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />
     return (
       <section className={styles.comments}>
-        <AddComment username={this.props.username} article_id={this.props.article_id} addComment={this.addComment} />
-        < ul >
-          {comments.map(comment => {
-            return <CommentCard key={comment.comment_id} comment={comment} username={this.props.username} removeFunction={this.removeFunction} />
-          })}
-        </ul >
+        {this.props.username ? <AddComment username={this.props.username} article_id={this.props.article_id} addComment={this.addComment} /> : <h3>please log in to leave a comment</h3>}
+        {!comments.length ? <h3>no comments</h3> :
+          <>
+            <h3>comments</h3>
+            < ul >
+              {comments.map(comment => {
+                return <CommentCard key={comment.comment_id} comment={comment} username={this.props.username} removeFunction={this.removeFunction} />
+              })}
+            </ul >
+          </>}
       </section>
     );
   };
