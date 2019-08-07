@@ -23,8 +23,8 @@ class Voter extends Component {
   }
 
   handleVotes = (inc_votes) => {
-    const { article_id } = this.props
-    api.updateVotes(article_id, inc_votes).catch(error => {
+    const { article_id, comment_id } = this.props
+    api.updateVotes(article_id, comment_id, inc_votes).catch(error => {
       this.setState(({ voteChange }) => {
         return { voteChange: voteChange - inc_votes }
       })
