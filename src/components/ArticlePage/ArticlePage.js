@@ -15,15 +15,18 @@ class ArticlePage extends Component {
   }
 
   render() {
+
     const { article, isLoading, error } = this.state
+    const { username } = this.props
     if (isLoading) return <LoadingSpinner />
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />
+
     return (
       <>
         <article className={styles.article}>
-          <ArticleLayout article={article} username={this.props.username} removeFunction={this.removeFunction} />
+          <ArticleLayout article={article} username={username} removeFunction={this.removeFunction} />
         </article>
-        < CommentList article_id={this.state.article.article_id} username={this.props.username} />
+        < CommentList article_id={article.article_id} username={username} />
       </>
     );
   }
@@ -33,7 +36,8 @@ class ArticlePage extends Component {
   }
 
   fetchArticle = () => {
-    api.getArticle(this.props.article_id).then(article => {
+    const { article_id } = this.props
+    api.getArticle(article_id).then(article => {
       this.setState({ article, isLoading: false })
     }).catch(({ response }) => {
       const error = { status: response.status, msg: response.data.msg }

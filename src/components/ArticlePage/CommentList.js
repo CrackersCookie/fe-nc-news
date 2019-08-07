@@ -16,17 +16,18 @@ class CommentList extends Component {
 
   render() {
     const { comments, isLoading, error } = this.state
+    const { username, article_id } = this.props
     if (isLoading) return <LoadingSpinner />
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />
     return (
       <section className={styles.comments}>
-        {this.props.username ? <AddComment username={this.props.username} article_id={this.props.article_id} addComment={this.addComment} /> : <h3>please log in to leave a comment</h3>}
+        {username ? <AddComment username={username} article_id={article_id} addComment={this.addComment} /> : <h3>please log in to leave a comment</h3>}
         {!comments.length ? <h3>no comments</h3> :
           <>
             <h3>Comments</h3>
             < ul >
               {comments.map(comment => {
-                return <CommentCard key={comment.comment_id} comment={comment} username={this.props.username} removeFunction={this.removeFunction} />
+                return <CommentCard key={comment.comment_id} comment={comment} username={username} removeFunction={this.removeFunction} />
               })}
             </ul >
           </>}
@@ -39,7 +40,8 @@ class CommentList extends Component {
   }
 
   fetchComments = () => {
-    api.getComments(this.props.article_id).then(comments => {
+    const { article_id } = this.props
+    api.getComments(article_id).then(comments => {
       this.setState({ comments, isLoading: false })
     })
   }
@@ -63,6 +65,3 @@ class CommentList extends Component {
 };
 
 export default CommentList;
-
-
-
