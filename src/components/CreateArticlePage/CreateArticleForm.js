@@ -8,7 +8,8 @@ class CreateArticleForm extends Component {
     title: '',
     body: '',
     topic: 'coding',
-    error: null
+    error: null,
+    bodyCharacterLimit: 5000
   }
 
   render() {
@@ -22,6 +23,7 @@ class CreateArticleForm extends Component {
             <option value="cooking">cooking</option>
           </select>
           <textarea value={this.state.body} onChange={this.handleTextChange} rows="20" cols="20" name="body" placeholder="Write your article here..." required></textarea>
+          <p className={styles.characters}>characters remaing: {this.state.bodyCharacterLimit - this.state.body.length}</p>
           <input type="submit" value="Submit"></input>
         </form>
       </article>
@@ -29,7 +31,11 @@ class CreateArticleForm extends Component {
   }
 
   handleTextChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value })
+    const { bodyCharacterLimit } = this.state
+    const characterLimitCheck = name === 'body' && value.length <= bodyCharacterLimit
+    if (name === 'title' || characterLimitCheck) {
+      this.setState({ [name]: value })
+    }
   }
 
   handleOptionChange = ({ target: { name, value } }) => {

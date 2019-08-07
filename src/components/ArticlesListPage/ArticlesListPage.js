@@ -24,7 +24,7 @@ class ArticlesListPage extends Component {
       <section className={styles.articlesList}>
         <h1>Articles</h1>
         {this.props.location && this.props.location.state.article_id && <p className={styles.deleted}>Article succesfully deleted</p>}
-        <Link to="/article" >Post Article</Link>
+        <button className={styles.buttonPost}><Link to="/article" >Post Article</Link></button>
         {this.props.path ? <ArticleSorter fetchArticles={this.fetchArticles} /> : <></>}
         <ul>
           {articles.map(article => {

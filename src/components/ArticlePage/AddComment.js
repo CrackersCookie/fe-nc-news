@@ -8,12 +8,13 @@ class AddComment extends Component {
     characterLimit: 1000
   }
   render() {
+    const { comment, characterLimit } = this.state
     return (
       <>
         <h3>Add comment</h3>
         <form onSubmit={this.handleSubmit} className={styles.form}>
-          <textarea value={this.state.comment} onChange={this.handleTextChange} rows="4" cols="80" name="comment" placeholder="Enter your comment here..." className={styles.textArea} required></textarea>
-          <p className={styles.characters}>characters remaing: {this.state.characterLimit - this.state.comment.length}</p>
+          <textarea value={comment} onChange={this.handleTextChange} rows="4" cols="80" name="comment" placeholder="Enter your comment here..." className={styles.textArea} required></textarea>
+          <p className={styles.characters}>characters remaing: {characterLimit - comment.length}</p>
           <input className={styles.button} type="submit" value="post comment" />
         </form>
       </>
@@ -21,7 +22,8 @@ class AddComment extends Component {
   }
 
   handleTextChange = ({ target: { value } }) => {
-    if (value.length <= this.state.characterLimit) {
+    const { characterLimit } = this.state
+    if (value.length <= characterLimit) {
       this.setState({ comment: value })
     }
   }

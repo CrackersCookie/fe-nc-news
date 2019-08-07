@@ -9,3 +9,28 @@
 .deleted {
   color: red;
 }
+
+.buttonPost {
+  float: right;
+  font-size: 1em;
+  width: 10em;
+  padding: .6em 1.4em .5em .8em;
+  border-radius: .5em;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  background-image: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+  margin-top: 0.5em;
+}
+
+.buttonPost:hover {
+  border-color: #888;
+}
+
+.buttonPost:active {
+  background-color: rgb(59, 153, 252)
+}
+
+a:hover {
+  padding: 0.5em;
+  border-radius: 10px;
+}
