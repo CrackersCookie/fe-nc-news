@@ -15,17 +15,16 @@ class ArticlesListPage extends Component {
     error: null
   }
 
-
   render() {
+    console.log(this.state)
     const { articles, isLoading, error } = this.state
-    const { article_id } = this.props.location.state
     if (isLoading) return <LoadingSpinner />
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />
 
     return (
       <section className={styles.articlesList}>
         <h1>Articles</h1>
-        {article_id && <p className={styles.deleted}>Article succesfully deleted</p>}
+        {this.props.location && this.props.location.state.article_id && <p className={styles.deleted}>Article succesfully deleted</p>}
         {this.props.path ? <ArticleSorter fetchArticles={this.fetchArticles} /> : <></>}
         <ul>
           {articles.map(article => {
@@ -48,10 +47,13 @@ class ArticlesListPage extends Component {
 
   fetchArticles = (query) => {
     if (!this.props.path) query = { sort_by: "votes", order: "desc", limit: 3 }
+
     const queries = { topic: this.props.topic, ...query }
+    console.log(queries)
     api.getArticles(queries).then((articles) => {
       this.setState({ articles, isLoading: false })
     }).catch(({ response }) => {
+      console.log(response)
       const error = { status: response.status, msg: response.data.msg }
       this.setState({ error, isLoading: false })
     })

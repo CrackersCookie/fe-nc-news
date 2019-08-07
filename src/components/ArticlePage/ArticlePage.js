@@ -42,12 +42,12 @@ class ArticlePage extends Component {
   }
 
   removeFunction = (article_id, topic) => {
-    // api.deleteArticle(article_id).then(() => {
-    navigate(`/topics/${topic}`, { state: { article_id } })
-    // }).catch(({ response }) => {
-    // const error = { status: response.status, msg: response.data.msg }
-    // this.setState({ error, isLoading: false })
-    // })
+    api.deleteArticle(article_id).then(() => {
+      navigate(`/topics/${topic}`, { state: { article_id } })
+    }).catch(({ response }) => {
+      const error = { status: response.status, msg: response.data.msg }
+      this.setState({ error, isLoading: false })
+    })
   }
 
 }
