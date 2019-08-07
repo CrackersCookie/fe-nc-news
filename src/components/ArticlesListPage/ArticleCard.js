@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ArticleCard.module.css';
 import { Link } from "@reach/router";
+import Voter from '../Voter';
 
 const ArticleCard = ({ article }) => {
   const { title, author, body, created_at, votes, comment_count, article_id } = article
@@ -12,7 +13,7 @@ const ArticleCard = ({ article }) => {
       <p>{body}</p>
       <p>Author: {author}</p>
       <p>Date: {date}</p>
-      <p>Votes: {votes}</p>
+      <Voter votes={votes} />
       <p>Comments: {comment_count}</p>
       <Link to={`/articles/${article_id}`}>
         <button className={styles.button}>read article</button>
