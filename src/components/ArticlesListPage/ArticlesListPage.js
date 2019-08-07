@@ -18,11 +18,14 @@ class ArticlesListPage extends Component {
 
   render() {
     const { articles, isLoading, error } = this.state
+    const { article_id } = this.props.location.state
     if (isLoading) return <LoadingSpinner />
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />
+
     return (
       <section className={styles.articlesList}>
         <h1>Articles</h1>
+        {article_id && <p className={styles.deleted}>Article succesfully deleted</p>}
         {this.props.path ? <ArticleSorter fetchArticles={this.fetchArticles} /> : <></>}
         <ul>
           {articles.map(article => {
