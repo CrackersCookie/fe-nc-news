@@ -4,7 +4,8 @@ import styles from './AddComment.module.css';
 
 class AddComment extends Component {
   state = {
-    comment: ''
+    comment: '',
+    characterLimit: 1000
   }
   render() {
     return (
@@ -12,6 +13,7 @@ class AddComment extends Component {
         <h3>Add comment</h3>
         <form onSubmit={this.handleSubmit} className={styles.form}>
           <textarea value={this.state.comment} onChange={this.handleTextChange} rows="4" cols="80" name="comment" placeholder="Enter your comment here..." className={styles.textArea} required></textarea>
+          <p>characters remaing: {this.state.characterLimit - this.state.comment.length}</p>
           {this.props.username && <p>logged in as: {`${this.props.username}`}</p>}
           <input className={styles.button} type="submit" value="post comment" />
         </form>
@@ -20,7 +22,9 @@ class AddComment extends Component {
   }
 
   handleTextChange = ({ target: { value } }) => {
-    this.setState({ comment: value })
+    if (value.length <= this.state.characterLimit) {
+      this.setState({ comment: value })
+    }
   }
 
   handleSubmit = (e) => {
