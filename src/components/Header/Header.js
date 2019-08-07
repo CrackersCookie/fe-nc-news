@@ -8,7 +8,7 @@ const Header = ({ username, setSelectedUser }) => {
   return (
     <header className={styles.header}>
       <h1>MC-NEWS</h1>
-      <div>
+      <div className={styles.userHeader}>
         {username && (
           <>
             <button
@@ -18,9 +18,9 @@ const Header = ({ username, setSelectedUser }) => {
             >
               log out
             </button>
-            <h5>
+            <h4 className={styles.username}>
               <Icon icon={userIcon} /> {username}
-            </h5>
+            </h4>
           </>
         )}
         <UserDropdownList

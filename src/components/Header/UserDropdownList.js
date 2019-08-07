@@ -16,15 +16,14 @@ class UserDropdownList extends Component {
     if (isLoading) return <LoadingSpinner />;
 
     return (
-      <form>
-        <label>select user: </label>
+      <form className={styles.formSelectUser}>
+        <label className={styles.label}>user: </label>
         <select
           className={styles.select}
           value={username}
           onChange={setSelectedUser}
         >
           {users.map(user => {
-            console.log(user);
             return <UsersList key={user.username} user={user} />;
           })}
         </select>
