@@ -1,10 +1,11 @@
 import React from "react";
-import ArticlesListPage from "../ArticlesListPage/ArticlesListPage.js";
+import ArticlesList from "../ArticlesListPage/ArticlesListPage.js";
 
 const HomePage = () => {
   return (
     <div>
-      <ArticlesListPage />
+      <h1>most recent articles</h1>
+      <ArticlesList />
     </div>
   );
 };
