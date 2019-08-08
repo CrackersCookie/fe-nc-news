@@ -7,13 +7,13 @@ class CreateArticleForm extends Component {
   state = {
     title: "",
     body: "",
-    topic: "coding",
+    topic: "",
     error: null,
     bodyCharacterLimit: 5000
   };
 
   render() {
-    const { title, body, bodyCharacterLimit } = this.state;
+    const { title, body, bodyCharacterLimit, topic } = this.state;
 
     return (
       <article className={styles.article}>
@@ -27,10 +27,11 @@ class CreateArticleForm extends Component {
             required
           />
           <select
-            value={"topic"}
+            value={topic}
             onChange={this.handleOptionChange}
             className={styles.select}
           >
+            <option value="" />
             <option value="coding">coding</option>
             <option value="football">football</option>
             <option value="cooking">cooking</option>
@@ -63,7 +64,7 @@ class CreateArticleForm extends Component {
   };
 
   handleOptionChange = ({ target: { value } }) => {
-    this.setState({ topic: value });
+    if (value) this.setState({ topic: value });
   };
 
   handleSubmit = e => {

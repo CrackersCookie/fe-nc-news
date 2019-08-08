@@ -17,17 +17,23 @@ class AddComment extends Component {
           <textarea
             value={comment}
             onChange={this.handleTextChange}
-            rows="4"
+            rows="6"
             cols="80"
             name="comment"
             placeholder="Enter your comment here..."
             className={styles.textArea}
             required
           />
-          <p className={styles.characters}>
-            characters remaing: {characterLimit - comment.length}
-          </p>
-          <input className={styles.button} type="submit" value="post comment" />
+          <div className={styles.formButtons}>
+            <p className={styles.characters}>
+              characters remaining: {characterLimit - comment.length}
+            </p>
+            <input
+              className={styles.button}
+              type="submit"
+              value="post comment"
+            />
+          </div>
         </form>
       </>
     );
