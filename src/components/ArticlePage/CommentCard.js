@@ -14,13 +14,15 @@ const CommentCard = ({ comment, username, removeFunction }) => {
   return (
     <li key={comment_id} className={styles.comment}>
       <p>{body}</p>
-      <p>
-        <Icon icon={userIcon} /> <Link to={`/users/${author}`}>{author}</Link>
-      </p>
-      <p>
-        <Icon icon={tearOffCalendar} /> {date}
-      </p>
-      <Voter votes={votes} comment_id={comment_id} />
+      <div className={styles.flexContainer}>
+        <Voter votes={votes} comment_id={comment_id} />
+        <p className={styles.pTag}>
+          <Icon icon={userIcon} /> <Link to={`/users/${author}`}>{author}</Link>
+        </p>
+        <p className={styles.pTag}>
+          <Icon icon={tearOffCalendar} /> {date}
+        </p>
+      </div>
       {author === username && (
         <DeleteButton id={comment_id} removeFunction={removeFunction} />
       )}
