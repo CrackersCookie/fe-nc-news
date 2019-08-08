@@ -28,6 +28,14 @@ export const getUsers = async () => {
   return users;
 };
 
+export const getUser = async username => {
+  const URL = `users/${username}`;
+  let {
+    data: { user }
+  } = await request.get(URL);
+  return user;
+};
+
 export const getArticle = async article_id => {
   const URL = `articles/${article_id}`;
   let {

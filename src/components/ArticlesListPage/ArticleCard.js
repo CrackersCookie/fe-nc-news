@@ -24,7 +24,7 @@ const ArticleCard = ({ article, username }) => {
       <h3>{title}</h3>
       <p>{body}</p>
       <p>
-        <Icon icon={userIcon} /> {author}
+        <Icon icon={userIcon} /> <Link to={`/users/${author}`}>{author}</Link>
       </p>
       <p>
         <Icon icon={tearOffCalendar} /> {date}

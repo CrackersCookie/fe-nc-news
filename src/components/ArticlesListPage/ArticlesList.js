@@ -55,7 +55,6 @@ class ArticlesList extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { topic } = this.props;
     const { p } = this.state;
-    console.log(p);
     if (prevProps.topic !== topic || prevState.p !== p) {
       this.fetchArticles();
     }
@@ -66,12 +65,12 @@ class ArticlesList extends Component {
   };
 
   fetchArticles = query => {
-    const { path, topic } = this.props;
+    const { path, topic, author } = this.props;
     let { p } = this.state;
     if (query && query.p) p = 1;
     if (!path) query = { sort_by: "created_at", order: "desc", limit: 3 };
 
-    const queries = { topic, p, ...query };
+    const queries = { topic, author, p, ...query };
     api
       .getArticles(queries)
       .then(({ articles, total_count }) => {

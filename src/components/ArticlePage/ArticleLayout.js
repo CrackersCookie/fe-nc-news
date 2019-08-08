@@ -4,8 +4,8 @@ import { Icon } from "@iconify/react";
 import userIcon from "@iconify/icons-fa-regular/user";
 import commentAltMessage from "@iconify/icons-uil/comment-alt-message";
 import tearOffCalendar from "@iconify/icons-noto/tear-off-calendar";
-import thumbsUp from '@iconify/icons-fa-regular/thumbs-up';
-
+import thumbsUp from "@iconify/icons-fa-regular/thumbs-up";
+import { Link } from "@reach/router";
 
 const ArticleLayout = ({ article, username, removeFunction }) => {
   const {
@@ -28,7 +28,7 @@ const ArticleLayout = ({ article, username, removeFunction }) => {
         <Icon icon={thumbsUp} /> {votes}
       </p>
       <p>
-        <Icon icon={userIcon} /> {author}
+        <Icon icon={userIcon} /> <Link to={`/users/${author}`}>{author}</Link>
       </p>
       <p>
         <Icon icon={tearOffCalendar} /> {date}

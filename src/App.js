@@ -9,6 +9,7 @@ import ArticlePage from "./components/ArticlePage/ArticlePage";
 import ErrorDisplay from "./components/ErrorDisplay";
 import CreateArticlePage from "./components/CreateArticlePage/CreateArticlePage";
 import Footer from "./components/Footer";
+import UserPage from "./components/UserPage/UserPage";
 
 class App extends Component {
   state = {
@@ -28,6 +29,7 @@ class App extends Component {
           <ArticlesListPage path="/topics/:topic" username={username} />
           <ArticlePage path="/articles/:article_id" username={username} />
           <CreateArticlePage path="/article" username={username} />
+          <UserPage path="/users/:username" />
           <ErrorDisplay default status={404} msg={"Route not found"} />
         </Router>
 

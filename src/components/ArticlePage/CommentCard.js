@@ -5,6 +5,7 @@ import Voter from "../Voter";
 import { Icon } from "@iconify/react";
 import userIcon from "@iconify/icons-fa-regular/user";
 import tearOffCalendar from "@iconify/icons-noto/tear-off-calendar";
+import { Link } from "@reach/router";
 
 const CommentCard = ({ comment, username, removeFunction }) => {
   const { body, votes, author, created_at, comment_id } = comment;
@@ -14,7 +15,7 @@ const CommentCard = ({ comment, username, removeFunction }) => {
     <li key={comment_id} className={styles.comment}>
       <p>{body}</p>
       <p>
-        <Icon icon={userIcon} /> {author}
+        <Icon icon={userIcon} /> <Link to={`/users/${author}`}>{author}</Link>
       </p>
       <p>
         <Icon icon={tearOffCalendar} /> {date}
