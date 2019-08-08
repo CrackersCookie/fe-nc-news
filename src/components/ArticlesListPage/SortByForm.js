@@ -3,7 +3,7 @@ import styles from "./SortByForm.module.css";
 
 const SortByForm = ({ sort_by, HandleFormChange }) => {
   return (
-    <form>
+    <form className={styles.form}>
       <label>
         <select
           value={sort_by}

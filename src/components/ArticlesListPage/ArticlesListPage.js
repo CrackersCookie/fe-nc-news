@@ -6,7 +6,7 @@ import { Link } from "@reach/router";
 
 const ArticlesListPage = ({ path, location, username, topic }) => {
   return (
-    <section>
+    <section className={styles.articlesPage}>
       {topic ? <h1>{topic}</h1> : path && <h1>all articles</h1>}
       <div className={styles.articlesList}>
         {location && location.state.article_id && (

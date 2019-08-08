@@ -1,0 +1,13 @@
+ul {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+.articlesList {
+  padding: 0.5rem;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 3px 3px 0px -3px rgba(241, 239, 224, 0.1);
+  border-radius: 10px;
+  margin-top: 1rem;
+}

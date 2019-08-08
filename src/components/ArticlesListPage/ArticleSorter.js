@@ -6,7 +6,8 @@ import styles from "./ArticleSorter.module.css";
 class ArticleSorter extends Component {
   state = {
     sort_by: "created_at",
-    order: "desc"
+    order: "desc",
+    p: 1
   };
 
   render() {
@@ -23,10 +24,11 @@ class ArticleSorter extends Component {
   }
 
   HandleFormChange = ({ target: { value, name } }) => {
+    const { fetchArticles } = this.props;
+
     this.setState(currentState => {
-      if (value) currentState.sort_by = value;
-      else currentState.order = name;
-      this.props.fetchArticles(currentState);
+      value ? (currentState.sort_by = value) : (currentState.order = name);
+      fetchArticles(currentState);
       return currentState;
     });
   };
