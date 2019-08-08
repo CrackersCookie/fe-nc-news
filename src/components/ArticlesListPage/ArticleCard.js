@@ -11,7 +11,6 @@ const ArticleCard = ({ article, username }) => {
   const {
     title,
     author,
-    body,
     created_at,
     votes,
     comment_count,
@@ -21,21 +20,29 @@ const ArticleCard = ({ article, username }) => {
 
   return (
     <li className={styles.article}>
-      <h3>{title}</h3>
-      <p>{body}</p>
-      <p>
-        <Icon icon={userIcon} /> <Link to={`/users/${author}`}>{author}</Link>
-      </p>
-      <p>
-        <Icon icon={tearOffCalendar} /> {date}
-      </p>
-      <Voter votes={votes} article_id={article_id} username={username} />
-      <p>
-        <Icon icon={commentAltMessage} flip="horizontal" /> {comment_count}
-      </p>
-      <Link to={`/articles/${article_id}`}>
-        <button className={styles.button}>read article</button>
-      </Link>
+      <div className={styles.container}>
+        <div className={styles.votes}>
+          <Voter votes={votes} article_id={article_id} username={username} />
+        </div>
+        <div className={styles.articleBody}>
+          <h3>{title}</h3>
+          <p>
+            <Icon icon={userIcon} />
+            <Link to={`/users/${author}`}>{author}</Link>
+          </p>
+          <p>
+            <Icon icon={commentAltMessage} flip="horizontal" /> {comment_count}
+          </p>
+          <div className={styles.flexContainer}>
+            <p className={styles.calendar}>
+              <Icon icon={tearOffCalendar} /> {date}
+            </p>
+            <Link to={`/articles/${article_id}`}>
+              <button className={styles.button}>read article</button>
+            </Link>
+          </div>
+        </div>
+      </div>
     </li>
   );
 };

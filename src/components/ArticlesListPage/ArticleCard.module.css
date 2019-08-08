@@ -1,9 +1,20 @@
 .article {
   border: solid rgb(241, 239, 224);
-  padding: 1rem;
+  padding: 0.5rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   border-radius: 10px;
+}
+
+.flexContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.calendar {
+  margin-bottom: 0px;
+  margin-top: 1.7rem;
 }
 
 .button {
@@ -22,4 +33,22 @@
 
 .button:active {
   background-color: rgb(59, 153, 252);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "votes article";
+  padding: 0.2rem;
+}
+
+.articleBody {
+  grid-area: article;
+}
+
+.votes {
+  grid-area: votes;
+  align-self: center;
+  justify-self: center;
 }

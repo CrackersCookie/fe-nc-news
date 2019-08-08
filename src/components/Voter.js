@@ -26,7 +26,7 @@ class Voter extends Component {
             {<Icon icon={triangleUp} />}
           </button>
         )}
-        <p>
+        <p className={styles.voteCount}>
           <Icon icon={thumbsUp} /> {votes + voteChange}
         </p>
         {username && (

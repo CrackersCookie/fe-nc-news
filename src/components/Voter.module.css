@@ -7,3 +7,9 @@
   box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
   background-image: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
 }
+
+.voteCount {
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
