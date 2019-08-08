@@ -1,0 +1,10 @@
+.section {
+  margin-top: 3rem;
+}
+
+.user {
+  display: grid;
+  align-items: center;
+  text-align: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}

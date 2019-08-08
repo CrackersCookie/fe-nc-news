@@ -19,12 +19,13 @@ class ArticlesList extends Component {
 
   render() {
     const { articles, isLoading, error, p, pMax } = this.state;
-    const { location, username } = this.props;
+    const { location, username, path } = this.props;
+    console.log(path);
     if (isLoading) return <LoadingSpinner />;
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />;
     return (
       <section className={styles.articlesList}>
-        <ArticleSorter fetchArticles={this.fetchArticles} />
+        {path && <ArticleSorter fetchArticles={this.fetchArticles} />}
         {location && location.state.article_id && (
           <p className={styles.deleted}>article succesfully deleted</p>
         )}
@@ -39,11 +40,13 @@ class ArticlesList extends Component {
             );
           })}
         </ul>
-        <Pagination
-          handlePageChange={this.handlePageChange}
-          p={p}
-          pMax={pMax}
-        />
+        {path && (
+          <Pagination
+            handlePageChange={this.handlePageChange}
+            p={p}
+            pMax={pMax}
+          />
+        )}
       </section>
     );
   }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LoadingSpinner from "../LoadingSpinner";
 import * as api from "../../api";
 import ArticlesList from "../ArticlesListPage/ArticlesList";
+import styles from "./UserPage.module.css";
 
 class UserPage extends Component {
   state = {
@@ -14,12 +15,14 @@ class UserPage extends Component {
     if (isLoading) return <LoadingSpinner />;
     const { username, name, avatar_url } = user;
     return (
-      <div>
-        <p>{username}</p>
-        <p>{name}</p>
-        <img src={avatar_url} alt="profile" />
+      <section className={styles.section}>
+        <h3>name: {name}</h3>
+        <div className={styles.user}>
+          <p>username: {username}</p>
+          <img src={avatar_url} alt="profile" />
+        </div>
         <ArticlesList username={username} />
-      </div>
+      </section>
     );
   }
 
