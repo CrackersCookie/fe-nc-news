@@ -7,7 +7,7 @@ import userIcon from "@iconify/icons-fa-regular/user";
 import commentAltMessage from "@iconify/icons-uil/comment-alt-message";
 import tearOffCalendar from "@iconify/icons-noto/tear-off-calendar";
 
-const ArticleCard = ({ article }) => {
+const ArticleCard = ({ article, username }) => {
   const {
     title,
     author,
@@ -29,7 +29,7 @@ const ArticleCard = ({ article }) => {
       <p>
         <Icon icon={tearOffCalendar} /> {date}
       </p>
-      <Voter votes={votes} article_id={article_id} />
+      <Voter votes={votes} article_id={article_id} username={username} />
       <p>
         <Icon icon={commentAltMessage} flip="horizontal" /> {comment_count}
       </p>

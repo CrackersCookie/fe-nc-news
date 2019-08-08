@@ -13,27 +13,31 @@ class Voter extends Component {
 
   render() {
     const { voteChange } = this.state;
-    const { votes } = this.props;
+    const { votes, username } = this.props;
 
     return (
       <>
-        <button
-          className={styles.button}
-          onClick={() => this.handleVotes(1)}
-          disabled={voteChange >= 1}
-        >
-          {<Icon icon={triangleUp} />}
-        </button>
+        {username && (
+          <button
+            className={styles.button}
+            onClick={() => this.handleVotes(1)}
+            disabled={voteChange >= 1}
+          >
+            {<Icon icon={triangleUp} />}
+          </button>
+        )}
         <p>
           <Icon icon={thumbsUp} /> {votes + voteChange}
         </p>
-        <button
-          className={styles.button}
-          onClick={() => this.handleVotes(-1)}
-          disabled={voteChange <= -1}
-        >
-          {<Icon icon={triangleDown} />}
-        </button>
+        {username && (
+          <button
+            className={styles.button}
+            onClick={() => this.handleVotes(-1)}
+            disabled={voteChange <= -1}
+          >
+            {<Icon icon={triangleDown} />}
+          </button>
+        )}
       </>
     );
   }
