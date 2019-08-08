@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./Header.module.css";
-import UserDropdownList from "./UserDropdownList";
+import UserList from "./UserList";
 import { Icon } from "@iconify/react";
 import userIcon from "@iconify/icons-fa-regular/user";
 import { Link } from "@reach/router";
 import mcnews from "../../Images/mc-news.png";
 
-const Header = ({ username, setSelectedUser }) => {
+const Header = ({ username, setSelectedUser, users }) => {
   return (
     <header className={styles.header}>
       <div>
@@ -32,9 +32,10 @@ const Header = ({ username, setSelectedUser }) => {
             </h4>
           </>
         )}
-        <UserDropdownList
+        <UserList
           username={username}
           setSelectedUser={setSelectedUser}
+          users={users}
         />
       </div>
     </header>

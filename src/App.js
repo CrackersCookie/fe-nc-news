@@ -10,17 +10,27 @@ import ErrorDisplay from "./components/ErrorDisplay";
 import CreateArticlePage from "./components/CreateArticlePage/CreateArticlePage";
 import Footer from "./components/Footer";
 import UserPage from "./components/UserPage/UserPage";
+import AllUsersPage from "./components/AllUsersPage/AllUsersPage";
+import * as api from "./api";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 class App extends Component {
   state = {
-    username: "jessjelly"
+    username: "jessjelly",
+    users: null,
+    isLoading: true
   };
 
   render() {
-    const { username } = this.state;
+    const { username, users, isLoading } = this.state;
+    if (isLoading) return <LoadingSpinner />;
     return (
       <div className="App">
-        <Header username={username} setSelectedUser={this.setSelectedUser} />
+        <Header
+          username={username}
+          setSelectedUser={this.setSelectedUser}
+          users={users}
+        />
         <Nav />
 
         <Router>
@@ -30,6 +40,7 @@ class App extends Component {
           <ArticlePage path="/articles/:article_id" username={username} />
           <CreateArticlePage path="/article" username={username} />
           <UserPage path="/users/:username" />
+          <AllUsersPage path="/users" />
           <ErrorDisplay default status={404} msg={"Route not found"} />
         </Router>
 
@@ -37,6 +48,14 @@ class App extends Component {
       </div>
     );
   }
+
+  componentDidMount() {
+    this.fetchUsers();
+  }
+
+  fetchUsers = () => {
+    api.getUsers().then(users => this.setState({ users, isLoading: false }));
+  };
 
   setSelectedUser = ({ target: { value } }) => {
     this.setState({ username: value });
