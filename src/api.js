@@ -5,12 +5,11 @@ const request = Axios.create({
 });
 
 export const getArticles = async queries => {
-  console.log(queries);
   const URL = "articles";
   let {
-    data: { articles }
+    data: { articles, total_count }
   } = await request.get(URL, { params: queries });
-  return articles;
+  return { articles, total_count };
 };
 
 export const getTopics = async () => {

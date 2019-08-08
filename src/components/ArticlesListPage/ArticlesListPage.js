@@ -7,17 +7,19 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import LoadingSpinner from "../LoadingSpinner";
 import ErrorDisplay from "../ErrorDisplay";
 import { Link } from "@reach/router";
+import Pagination from "../Pagination";
 
 class ArticlesListPage extends Component {
   state = {
     articles: null,
     isLoading: true,
-    error: null
+    error: null,
+    p: 1,
+    pMax: null
   };
 
   render() {
-    console.log(this.props);
-    const { articles, isLoading, error } = this.state;
+    const { articles, isLoading, error, p, pMax } = this.state;
     const { path, location, username, topic } = this.props;
     if (isLoading) return <LoadingSpinner />;
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />;
@@ -50,6 +52,11 @@ class ArticlesListPage extends Component {
             return <ArticleCard key={article.article_id} article={article} />;
           })}
         </ul>
+        <Pagination
+          handlePageChange={this.handlePageChange}
+          p={p}
+          pMax={pMax}
+        />
       </section>
     );
   }
@@ -58,22 +65,29 @@ class ArticlesListPage extends Component {
     this.fetchArticles();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     const { topic } = this.props;
-    if (prevProps.topic !== topic) {
+    const { p } = this.state;
+    if (prevProps.topic !== topic || prevState.p !== p) {
       this.fetchArticles();
     }
   }
 
+  handlePageChange = pChange => {
+    this.setState(({ p }) => ({ p: p + pChange }));
+  };
+
   fetchArticles = query => {
     const { path, topic } = this.props;
+    const { p } = this.state;
     if (!path) query = { sort_by: "created_at", order: "desc", limit: 3 };
 
-    const queries = { topic, ...query };
+    const queries = { topic, p, ...query };
     api
       .getArticles(queries)
-      .then(articles => {
-        this.setState({ articles, isLoading: false });
+      .then(({ articles, total_count }) => {
+        const pMax = Math.ceil(total_count / 10);
+        this.setState({ articles, isLoading: false, pMax });
       })
       .catch(({ response }) => {
         const error = { status: response.status, msg: response.data.msg };
