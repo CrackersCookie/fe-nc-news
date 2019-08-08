@@ -11,3 +11,8 @@ ul {
   border-radius: 10px;
   margin-top: 1rem;
 }
+
+.deleted {
+  margin-top: 0.5em;
+  color: red;
+}

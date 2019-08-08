@@ -19,11 +19,15 @@ class ArticlesList extends Component {
 
   render() {
     const { articles, isLoading, error, p, pMax } = this.state;
+    const { location } = this.props;
     if (isLoading) return <LoadingSpinner />;
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />;
     return (
       <section className={styles.articlesList}>
         <ArticleSorter fetchArticles={this.fetchArticles} />
+        {location && location.state.article_id && (
+          <p className={styles.deleted}>Article succesfully deleted</p>
+        )}
         <ul className={styles.unorderedList}>
           {articles.map(article => {
             return <ArticleCard key={article.article_id} article={article} />;
@@ -45,7 +49,7 @@ class ArticlesList extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { topic } = this.props;
     const { p } = this.state;
-    // console.log(p);
+    console.log(p);
     if (prevProps.topic !== topic || prevState.p !== p) {
       this.fetchArticles();
     }

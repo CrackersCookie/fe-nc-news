@@ -4,6 +4,8 @@ import styles from "./Nav.module.css";
 import NavTopicsButtons from "./NavTopicsButtons";
 import * as api from "../../api";
 import ErrorDisplay from "../ErrorDisplay";
+import { Icon } from "@iconify/react";
+import homeOutline from "@iconify/icons-mdi/home-outline";
 
 class Nav extends Component {
   state = {
@@ -18,7 +20,9 @@ class Nav extends Component {
 
     return (
       <nav className={styles.nav}>
-        <Link to="/">home</Link>
+        <Link to="/">
+          <Icon icon={homeOutline} />
+        </Link>
         <Link to="/articles">all articles</Link>
         {isLoading ? (
           <p>topics loading....</p>
