@@ -6,6 +6,7 @@ import commentAltMessage from "@iconify/icons-uil/comment-alt-message";
 import tearOffCalendar from "@iconify/icons-noto/tear-off-calendar";
 import thumbsUp from "@iconify/icons-fa-regular/thumbs-up";
 import { Link } from "@reach/router";
+import styles from "./ArticleLayout.module.css";
 
 const ArticleLayout = ({ article, username, removeFunction }) => {
   const {
@@ -24,18 +25,20 @@ const ArticleLayout = ({ article, username, removeFunction }) => {
     <>
       <h3>{title}</h3>
       <p>{body}</p>
-      <p>
-        <Icon icon={thumbsUp} /> {votes}
-      </p>
-      <p>
-        <Icon icon={userIcon} /> <Link to={`/users/${author}`}>{author}</Link>
-      </p>
-      <p>
-        <Icon icon={tearOffCalendar} /> {date}
-      </p>
-      <p>
-        <Icon icon={commentAltMessage} flip="horizontal" /> {comment_count}
-      </p>
+      <div className={styles.flexContainer}>
+        <p>
+          <Icon icon={thumbsUp} /> {votes}
+        </p>
+        <p>
+          <Icon icon={userIcon} /> <Link to={`/users/${author}`}>{author}</Link>
+        </p>
+        <p>
+          <Icon icon={tearOffCalendar} /> {date}
+        </p>
+        <p>
+          <Icon icon={commentAltMessage} flip="horizontal" /> {comment_count}
+        </p>
+      </div>
       {author === username ? (
         <DeleteButton
           id={article_id}
