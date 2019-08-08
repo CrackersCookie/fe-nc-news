@@ -1,12 +1,12 @@
 .users {
   max-height: 20em;
   max-width: 20em;
-  margin: auto auto;
+  margin: auto;
 }
 
 .image {
-  width: auto;
-  height: auto;
+  max-width: 60%;
+  max-height: 60%;
 }
 
 @media (max-width: 600px) {

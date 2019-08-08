@@ -30,3 +30,9 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.image {
+  max-width: 12rem;
+  max-height: 12rem;
+  margin-left: 1rem;
+}

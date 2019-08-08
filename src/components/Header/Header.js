@@ -9,9 +9,7 @@ import mcnews from "../../Images/mc-news.png";
 const Header = ({ username, setSelectedUser, users }) => {
   return (
     <header className={styles.header}>
-      <div>
-        <img src={mcnews} alt="mc-news-logo" />
-      </div>
+      <img src={mcnews} alt="mc-news-logo" className={styles.image} />
       <div className={styles.userHeader}>
         {username && (
           <>
