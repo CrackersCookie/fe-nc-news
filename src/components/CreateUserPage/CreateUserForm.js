@@ -9,8 +9,7 @@ class CreateUserForm extends Component {
   state = {
     name: "",
     username: "",
-    avatar_url:
-      "http://icons.iconarchive.com/icons/fasticon/cat/256/Cat-Black-icon.png",
+    avatar_url: "select avatar",
     profileImages: profileAssets,
     error: null
   };
@@ -43,6 +42,7 @@ class CreateUserForm extends Component {
             onChange={this.handleOptionChange}
             className={styles.select}
           >
+            <option value="select avatar">select avatar</option>
             {profileImages.map(profile => {
               return (
                 <option key={profile.image} value={profile.image}>
@@ -51,9 +51,15 @@ class CreateUserForm extends Component {
               );
             })}
           </select>
-          <input type="submit" value="Submit" />
+          <input
+            type="submit"
+            value="Submit"
+            disabled={avatar_url === "select avatar"}
+          />
         </form>
-        <img src={avatar_url} alt="selected profile" />
+        {avatar_url !== "select avatar" && (
+          <img src={avatar_url} alt="selected profile" />
+        )}
       </article>
     );
   }

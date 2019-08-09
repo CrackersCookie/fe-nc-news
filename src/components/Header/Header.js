@@ -38,6 +38,9 @@ const Header = ({ username, setSelectedUser, users }) => {
           users={users}
         />
         <button className={styles.button}>
+          <Link to="/user">add user</Link>
+        </button>
+        <button className={styles.button}>
           <Link to="/users">all users</Link>
         </button>
       </div>
