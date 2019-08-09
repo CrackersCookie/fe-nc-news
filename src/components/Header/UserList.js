@@ -2,14 +2,14 @@ import React from "react";
 import User from "./User";
 import styles from "./UserList.module.css";
 
-const UserList = ({ username, setSelectedUser, users }) => {
+const UserList = ({ loggedInUser, setSelectedUser, users }) => {
   return (
     <>
       <form className={styles.formSelectUser}>
         <label className={styles.label}>user: </label>
         <select
           className={styles.select}
-          value={username}
+          value={loggedInUser}
           onChange={setSelectedUser}
         >
           {users.map(user => {

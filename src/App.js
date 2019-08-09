@@ -17,18 +17,18 @@ import CreateUserPage from "./components/CreateUserPage/CreateUserPage";
 
 class App extends Component {
   state = {
-    username: "jessjelly",
+    loggedInUser: "jessjelly",
     users: null,
     isLoading: true
   };
 
   render() {
-    const { username, users, isLoading } = this.state;
+    const { loggedInUser, users, isLoading } = this.state;
     if (isLoading) return <LoadingSpinner />;
     return (
       <div className="App">
         <Header
-          username={username}
+          loggedInUser={loggedInUser}
           setSelectedUser={this.setSelectedUser}
           users={users}
         />
@@ -36,11 +36,14 @@ class App extends Component {
 
         <Router>
           <HomePage path="/" />
-          <ArticlesListPage path="/articles" username={username} />
-          <ArticlesListPage path="/topics/:topic" username={username} />
-          <ArticlePage path="/articles/:article_id" username={username} />
-          <CreateArticlePage path="/article" username={username} />
-          <UserPage path="/users/:username" username={username} />
+          <ArticlesListPage path="/articles" loggedInUser={loggedInUser} />
+          <ArticlesListPage path="/topics/:topic" loggedInUser={loggedInUser} />
+          <ArticlePage
+            path="/articles/:article_id"
+            loggedInUser={loggedInUser}
+          />
+          <CreateArticlePage path="/article" loggedInUser={loggedInUser} />
+          <UserPage path="/users/:username" loggedInUser={loggedInUser} />
           <AllUsersPage path="/users" users={users} />
           <CreateUserPage path="/user" />
           <ErrorDisplay default status={404} msg={"Route not found"} />
@@ -60,7 +63,7 @@ class App extends Component {
   };
 
   setSelectedUser = ({ target: { value } }) => {
-    this.setState({ username: value });
+    this.setState({ loggedInUser: value });
   };
 }
 

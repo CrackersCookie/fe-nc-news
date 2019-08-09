@@ -13,11 +13,11 @@ class Voter extends Component {
 
   render() {
     const { voteChange } = this.state;
-    const { votes, username, author } = this.props;
+    const { votes, loggedInUser, author } = this.props;
 
     return (
       <>
-        {username && username !== author && (
+        {loggedInUser && loggedInUser !== author && (
           <button
             className={styles.button}
             onClick={() => this.handleVotes(1)}
@@ -29,7 +29,7 @@ class Voter extends Component {
         <p className={styles.voteCount}>
           <Icon icon={thumbsUp} /> {votes + voteChange}
         </p>
-        {username && username !== author && (
+        {loggedInUser && loggedInUser !== author && (
           <button
             className={styles.button}
             onClick={() => this.handleVotes(-1)}

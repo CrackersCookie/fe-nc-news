@@ -19,7 +19,7 @@ class ArticlesList extends Component {
 
   render() {
     const { articles, isLoading, error, p, pMax } = this.state;
-    const { location, username, path } = this.props;
+    const { location, loggedInUser, path } = this.props;
     if (isLoading) return <LoadingSpinner />;
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />;
     return (
@@ -34,7 +34,7 @@ class ArticlesList extends Component {
               <ArticleCard
                 key={article.article_id}
                 article={article}
-                username={username}
+                loggedInUser={loggedInUser}
               />
             );
           })}

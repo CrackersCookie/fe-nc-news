@@ -16,7 +16,7 @@ class ArticlePage extends Component {
 
   render() {
     const { article, isLoading, error } = this.state;
-    const { username } = this.props;
+    const { loggedInUser } = this.props;
     if (isLoading) return <LoadingSpinner />;
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />;
 
@@ -25,11 +25,14 @@ class ArticlePage extends Component {
         <article className={styles.article}>
           <ArticleLayout
             article={article}
-            username={username}
+            loggedInUser={loggedInUser}
             removeFunction={this.removeFunction}
           />
         </article>
-        <CommentList article_id={article.article_id} username={username} />
+        <CommentList
+          article_id={article.article_id}
+          loggedInUser={loggedInUser}
+        />
       </>
     );
   }
