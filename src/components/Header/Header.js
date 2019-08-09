@@ -4,7 +4,7 @@ import UserList from "./UserList";
 import { Icon } from "@iconify/react";
 import userIcon from "@iconify/icons-fa-regular/user";
 import { Link } from "@reach/router";
-import mcnews from "../../Images/mc-news.png";
+import mcnews from "../Assets/Images/mc-news.png";
 
 const Header = ({ username, setSelectedUser, users }) => {
   return (

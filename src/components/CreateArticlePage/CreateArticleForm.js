@@ -8,7 +8,7 @@ class CreateArticleForm extends Component {
   state = {
     title: "",
     body: "",
-    topic: "",
+    topic: "select topic",
     error: null,
     bodyCharacterLimit: 5000,
     error: null
@@ -34,7 +34,7 @@ class CreateArticleForm extends Component {
             onChange={this.handleOptionChange}
             className={styles.select}
           >
-            <option value="" />
+            <option value="select topic">select topic</option>
             <option value="coding">coding</option>
             <option value="football">football</option>
             <option value="cooking">cooking</option>
@@ -51,7 +51,11 @@ class CreateArticleForm extends Component {
           <p className={styles.characters}>
             characters remaing: {bodyCharacterLimit - body.length}
           </p>
-          <input type="submit" value="Submit" />
+          <input
+            type="submit"
+            value="Submit"
+            disabled={topic === "select topic"}
+          />
         </form>
       </article>
     );
