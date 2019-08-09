@@ -11,11 +11,19 @@ class CreateUserForm extends Component {
     username: "",
     avatar_url: "select avatar",
     profileImages: profileAssets,
-    error: null
+    error: null,
+    valid: true
   };
 
   render() {
-    const { name, username, avatar_url, profileImages, error } = this.state;
+    const {
+      name,
+      username,
+      avatar_url,
+      profileImages,
+      error,
+      valid
+    } = this.state;
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />;
 
     return (
@@ -31,12 +39,18 @@ class CreateUserForm extends Component {
           />
           <input
             value={username}
+            onBlur={this.handleBlur}
             onChange={this.handleTextChange}
             type="text"
             name="username"
             placeholder="Username..."
             required
           />
+          {!valid && (
+            <p className={styles.red}>
+              username can only contain letters and numbers
+            </p>
+          )}
           <select
             value={avatar_url}
             onChange={this.handleOptionChange}
@@ -55,7 +69,7 @@ class CreateUserForm extends Component {
             className={styles.button}
             type="submit"
             value="Submit"
-            disabled={avatar_url === "select avatar"}
+            disabled={avatar_url === "select avatar" || valid === false}
           />
         </form>
         {avatar_url !== "select avatar" && (
@@ -71,6 +85,12 @@ class CreateUserForm extends Component {
 
   handleOptionChange = ({ target: { value } }) => {
     if (value) this.setState({ avatar_url: value });
+  };
+
+  handleBlur = ({ target: { value } }) => {
+    const regex = /^[0-9a-zA-Z]+$/;
+    if (!value.match(regex)) this.setState({ valid: false });
+    else this.setState({ valid: true });
   };
 
   handleSubmit = e => {

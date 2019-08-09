@@ -111,3 +111,7 @@ label {
 .button:active {
   background-color: rgb(59, 153, 252);
 }
+
+.red {
+  color: red;
+}
