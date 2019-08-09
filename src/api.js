@@ -67,6 +67,14 @@ export const postArticle = async ({ author, title, body, topic }) => {
   return article;
 };
 
+export const postUser = async ({ name, username, avatar_url }) => {
+  const URL = `users/`;
+  let {
+    data: { user }
+  } = await request.post(URL, { name, username, avatar_url });
+  return user;
+};
+
 export const deleteComment = async comment_id => {
   const URL = `/comments/${comment_id}`;
   let { response } = await request.delete(URL);

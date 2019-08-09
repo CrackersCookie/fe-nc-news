@@ -13,6 +13,7 @@ import UserPage from "./components/UserPage/UserPage";
 import AllUsersPage from "./components/AllUsersPage/AllUsersPage";
 import * as api from "./api";
 import LoadingSpinner from "./components/LoadingSpinner";
+import CreateUserPage from "./components/CreateUserPage/CreateUserPage";
 
 class App extends Component {
   state = {
@@ -41,6 +42,7 @@ class App extends Component {
           <CreateArticlePage path="/article" username={username} />
           <UserPage path="/users/:username" />
           <AllUsersPage path="/users" users={users} />
+          <CreateUserPage path="/user" />
           <ErrorDisplay default status={404} msg={"Route not found"} />
         </Router>
 
