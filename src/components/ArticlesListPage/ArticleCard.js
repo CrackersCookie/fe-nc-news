@@ -22,7 +22,12 @@ const ArticleCard = ({ article, username }) => {
     <li className={styles.article}>
       <div className={styles.container}>
         <div className={styles.votes}>
-          <Voter votes={votes} article_id={article_id} username={username} />
+          <Voter
+            votes={votes}
+            article_id={article_id}
+            username={username}
+            author={author}
+          />
         </div>
         <div className={styles.articleBody}>
           <h3>{title}</h3>

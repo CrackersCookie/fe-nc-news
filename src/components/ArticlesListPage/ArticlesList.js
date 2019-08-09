@@ -20,7 +20,6 @@ class ArticlesList extends Component {
   render() {
     const { articles, isLoading, error, p, pMax } = this.state;
     const { location, username, path } = this.props;
-    console.log(path);
     if (isLoading) return <LoadingSpinner />;
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />;
     return (
@@ -68,12 +67,12 @@ class ArticlesList extends Component {
   };
 
   fetchArticles = query => {
-    const { path, topic, author } = this.props;
+    const { path, topic, username } = this.props;
     let { p } = this.state;
     if (query && query.p) p = 1;
     if (!path) query = { sort_by: "created_at", order: "desc", limit: 3 };
 
-    const queries = { topic, author, p, ...query };
+    const queries = { topic, author: username, p, ...query };
     api
       .getArticles(queries)
       .then(({ articles, total_count }) => {

@@ -4,9 +4,9 @@ import { Icon } from "@iconify/react";
 import userIcon from "@iconify/icons-fa-regular/user";
 import commentAltMessage from "@iconify/icons-uil/comment-alt-message";
 import tearOffCalendar from "@iconify/icons-noto/tear-off-calendar";
-import thumbsUp from "@iconify/icons-fa-regular/thumbs-up";
 import { Link } from "@reach/router";
 import styles from "./ArticleLayout.module.css";
+import Voter from "../Voter";
 
 const ArticleLayout = ({ article, username, removeFunction }) => {
   const {
@@ -27,7 +27,7 @@ const ArticleLayout = ({ article, username, removeFunction }) => {
       <p>{body}</p>
       <div className={styles.flexContainer}>
         <p>
-          <Icon icon={thumbsUp} /> {votes}
+          <Voter votes={votes} article_id={article_id} author={author} />
         </p>
         <p>
           <Icon icon={userIcon} /> <Link to={`/users/${author}`}>{author}</Link>

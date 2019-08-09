@@ -13,19 +13,31 @@ const CommentCard = ({ comment, username, removeFunction }) => {
 
   return (
     <li key={comment_id} className={styles.comment}>
-      <p>{body}</p>
-      <div className={styles.flexContainer}>
-        <Voter votes={votes} comment_id={comment_id} />
-        <p className={styles.pTag}>
-          <Icon icon={userIcon} /> <Link to={`/users/${author}`}>{author}</Link>
-        </p>
-        <p className={styles.pTag}>
-          <Icon icon={tearOffCalendar} /> {date}
-        </p>
+      <div className={styles.container}>
+        <div className={styles.votes}>
+          <Voter
+            votes={votes}
+            comment_id={comment_id}
+            author={author}
+            username={username}
+          />
+        </div>
+        <div className={styles.commentBody}>
+          <p>{body}</p>
+          <div className={styles.flexContainer}>
+            <p className={styles.pTag}>
+              <Icon icon={userIcon} />{" "}
+              <Link to={`/users/${author}`}>{author}</Link>
+            </p>
+            <p className={styles.pTag}>
+              <Icon icon={tearOffCalendar} /> {date}
+            </p>
+          </div>
+          {author === username && (
+            <DeleteButton id={comment_id} removeFunction={removeFunction} />
+          )}
+        </div>
       </div>
-      {author === username && (
-        <DeleteButton id={comment_id} removeFunction={removeFunction} />
-      )}
     </li>
   );
 };
