@@ -91,3 +91,23 @@ label {
 .characters {
   float: left;
 }
+
+.button {
+  margin-right: 10%;
+  font-size: 1em;
+  width: 8em;
+  padding: 0.6em 0.5em 0.5em 0.5em;
+  border-radius: 0.5em;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  background-image: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+  margin-top: 0.5em;
+}
+
+.button:hover {
+  border-color: #888;
+}
+
+.button:active {
+  background-color: rgb(59, 153, 252);
+}

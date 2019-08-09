@@ -52,6 +52,7 @@ class CreateArticleForm extends Component {
             characters remaing: {bodyCharacterLimit - body.length}
           </p>
           <input
+            className={styles.button}
             type="submit"
             value="Submit"
             disabled={topic === "select topic"}

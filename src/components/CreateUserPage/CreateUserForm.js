@@ -52,6 +52,7 @@ class CreateUserForm extends Component {
             })}
           </select>
           <input
+            className={styles.button}
             type="submit"
             value="Submit"
             disabled={avatar_url === "select avatar"}
