@@ -22,33 +22,39 @@ const ArticleLayout = ({ article, username, removeFunction }) => {
   const date = new Date(created_at).toLocaleDateString();
 
   return (
-    <>
-      <h3>{title}</h3>
-      <p>{body}</p>
-      <div className={styles.flexContainer}>
-        <p>
-          <Voter votes={votes} article_id={article_id} author={author} />
-        </p>
-        <p>
-          <Icon icon={userIcon} /> <Link to={`/users/${author}`}>{author}</Link>
-        </p>
-        <p>
-          <Icon icon={tearOffCalendar} /> {date}
-        </p>
-        <p>
-          <Icon icon={commentAltMessage} flip="horizontal" /> {comment_count}
-        </p>
-      </div>
-      {author === username ? (
-        <DeleteButton
-          id={article_id}
-          topic={topic}
-          removeFunction={removeFunction}
+    <div className={styles.container}>
+      <div className={styles.votes}>
+        <Voter
+          votes={votes}
+          article_id={article_id}
+          author={author}
+          username={username}
         />
-      ) : (
-        <></>
-      )}
-    </>
+      </div>
+      <div className={styles.articleBody}>
+        <h3>{title}</h3>
+        <p>{body}</p>
+        <div className={styles.flexContainer}>
+          <p>
+            <Icon icon={userIcon} />{" "}
+            <Link to={`/users/${author}`}>{author}</Link>
+          </p>
+          <p>
+            <Icon icon={tearOffCalendar} /> {date}
+          </p>
+          <p>
+            <Icon icon={commentAltMessage} flip="horizontal" /> {comment_count}
+          </p>
+        </div>
+        {author === username && (
+          <DeleteButton
+            id={article_id}
+            topic={topic}
+            removeFunction={removeFunction}
+          />
+        )}
+      </div>
+    </div>
   );
 };
 

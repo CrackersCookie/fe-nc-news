@@ -2,3 +2,21 @@
   display: flex;
   justify-content: space-between;
 }
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "votes article";
+  padding: 0.2rem;
+}
+
+.articleBody {
+  grid-area: article;
+}
+
+.votes {
+  grid-area: votes;
+  align-self: center;
+  justify-self: center;
+}
