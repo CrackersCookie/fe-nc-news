@@ -7,7 +7,7 @@ import userIcon from "@iconify/icons-fa-regular/user";
 import commentAltMessage from "@iconify/icons-uil/comment-alt-message";
 import tearOffCalendar from "@iconify/icons-noto/tear-off-calendar";
 
-const ArticleCard = ({ article, username }) => {
+const ArticleCard = ({ article, loggedInUser }) => {
   const {
     title,
     author,
@@ -25,7 +25,7 @@ const ArticleCard = ({ article, username }) => {
           <Voter
             votes={votes}
             article_id={article_id}
-            username={username}
+            loggedInUser={loggedInUser}
             author={author}
           />
         </div>

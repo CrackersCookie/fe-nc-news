@@ -8,7 +8,7 @@ import { Link } from "@reach/router";
 import styles from "./ArticleLayout.module.css";
 import Voter from "../Voter";
 
-const ArticleLayout = ({ article, username, removeFunction }) => {
+const ArticleLayout = ({ article, loggedInUser, removeFunction }) => {
   const {
     title,
     body,
@@ -28,7 +28,7 @@ const ArticleLayout = ({ article, username, removeFunction }) => {
           votes={votes}
           article_id={article_id}
           author={author}
-          username={username}
+          loggedInUser={loggedInUser}
         />
       </div>
       <div className={styles.articleBody}>
@@ -46,7 +46,7 @@ const ArticleLayout = ({ article, username, removeFunction }) => {
             <Icon icon={commentAltMessage} flip="horizontal" /> {comment_count}
           </p>
         </div>
-        {author === username && (
+        {author === loggedInUser && (
           <DeleteButton
             id={article_id}
             topic={topic}

@@ -19,7 +19,7 @@ class ArticlesList extends Component {
 
   render() {
     const { articles, isLoading, error, p, pMax } = this.state;
-    const { location, username, path } = this.props;
+    const { location, loggedInUser, path } = this.props;
     if (isLoading) return <LoadingSpinner />;
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />;
     return (
@@ -34,7 +34,7 @@ class ArticlesList extends Component {
               <ArticleCard
                 key={article.article_id}
                 article={article}
-                username={username}
+                loggedInUser={loggedInUser}
               />
             );
           })}
@@ -68,14 +68,17 @@ class ArticlesList extends Component {
 
   fetchArticles = query => {
     const { path, topic, author } = this.props;
+    // console.log(path, topic, author);
     let { p } = this.state;
     if (query && query.p) p = 1;
-    if (!path) query = { sort_by: "created_at", order: "desc", limit: 3 };
+    // if (!path) query = { sort_by: "created_at", order: "desc", limit: 3 };
 
     const queries = { topic, author, p, ...query };
+    // console.log(queries, "<<<<<<");
     api
       .getArticles(queries)
       .then(({ articles, total_count }) => {
+        console.log(articles)
         const pMax = Math.ceil(total_count / 10);
         this.setState({ articles, isLoading: false, pMax, p, error: null });
       })

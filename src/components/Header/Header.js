@@ -6,7 +6,7 @@ import userIcon from "@iconify/icons-fa-regular/user";
 import { Link } from "@reach/router";
 import mcnews from "../Assets/Images/mc-news.png";
 
-const Header = ({ username, setSelectedUser, users }) => {
+const Header = ({ loggedInUser, setSelectedUser, users }) => {
   return (
     <header className={styles.header}>
       <div className={styles.flexBox}>
@@ -16,7 +16,7 @@ const Header = ({ username, setSelectedUser, users }) => {
         </button>
       </div>
       <div className={styles.userHeader}>
-        {username && (
+        {loggedInUser && (
           <>
             <div className={styles.buttonContainer}>
               <button
@@ -28,12 +28,12 @@ const Header = ({ username, setSelectedUser, users }) => {
               </button>
             </div>
             <h4 className={styles.username}>
-              <Icon icon={userIcon} /> {username}
+              <Icon icon={userIcon} /> {loggedInUser}
             </h4>
           </>
         )}
         <UserList
-          username={username}
+          loggedInUser={loggedInUser}
           setSelectedUser={setSelectedUser}
           users={users}
         />

@@ -12,7 +12,7 @@ class UserPage extends Component {
 
   render() {
     const { user, isLoading } = this.state;
-    const loggedInUser = this.props;
+    const { loggedInUser } = this.props;
     if (isLoading) return <LoadingSpinner />;
     const { username, name, avatar_url } = user;
 
@@ -25,7 +25,7 @@ class UserPage extends Component {
             <img src={avatar_url} alt="profile" className={styles.shake} />
           </div>
         </div>
-        <ArticlesList author={username} username={loggedInUser} />
+        <ArticlesList author={username} loggedInUser={loggedInUser} />
       </section>
     );
   }
@@ -36,7 +36,6 @@ class UserPage extends Component {
 
   fetchUser = () => {
     const author = this.props.username;
-
     api.getUser(author).then(user => {
       this.setState({ user, isLoading: false });
     });

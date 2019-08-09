@@ -12,7 +12,6 @@ class AddComment extends Component {
   render() {
     const { comment, characterLimit, error } = this.state;
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />;
-
     return (
       <>
         <h3>Add comment</h3>
@@ -51,7 +50,8 @@ class AddComment extends Component {
 
   handleSubmit = e => {
     const { comment } = this.state;
-    const { username, article_id } = this.props;
+    const { loggedInUser, article_id } = this.props;
+    const username = loggedInUser;
     e.preventDefault();
     api
       .postComment({ username, body: comment, article_id })

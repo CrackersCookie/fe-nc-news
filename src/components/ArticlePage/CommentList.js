@@ -16,14 +16,14 @@ class CommentList extends Component {
 
   render() {
     const { comments, isLoading, error, deleted } = this.state;
-    const { username, article_id } = this.props;
+    const { loggedInUser, article_id } = this.props;
     if (isLoading) return <LoadingSpinner />;
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />;
     return (
       <section className={styles.comments}>
-        {username ? (
+        {loggedInUser ? (
           <AddComment
-            username={username}
+            loggedInUser={loggedInUser}
             article_id={article_id}
             addComment={this.addComment}
           />
@@ -44,7 +44,7 @@ class CommentList extends Component {
                   <CommentCard
                     key={comment.comment_id}
                     comment={comment}
-                    username={username}
+                    loggedInUser={loggedInUser}
                     removeFunction={this.removeFunction}
                   />
                 );
