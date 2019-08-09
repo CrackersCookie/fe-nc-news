@@ -13,11 +13,11 @@ class Voter extends Component {
 
   render() {
     const { voteChange } = this.state;
-    const { votes, username } = this.props;
+    const { votes, username, author } = this.props;
 
     return (
       <>
-        {username && (
+        {username && username !== author && (
           <button
             className={styles.button}
             onClick={() => this.handleVotes(1)}

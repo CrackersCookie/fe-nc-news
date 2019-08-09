@@ -67,12 +67,13 @@ class ArticlesList extends Component {
   };
 
   fetchArticles = query => {
-    const { path, topic, username } = this.props;
+    console.log(this.props);
+    const { path, topic, author } = this.props;
     let { p } = this.state;
     if (query && query.p) p = 1;
     if (!path) query = { sort_by: "created_at", order: "desc", limit: 3 };
 
-    const queries = { topic, author: username, p, ...query };
+    const queries = { topic, author, p, ...query };
     api
       .getArticles(queries)
       .then(({ articles, total_count }) => {

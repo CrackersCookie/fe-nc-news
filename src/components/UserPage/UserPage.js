@@ -24,7 +24,7 @@ class UserPage extends Component {
             <img src={avatar_url} alt="profile" className={styles.shake} />
           </div>
         </div>
-        <ArticlesList username={username} />
+        <ArticlesList author={username} />
       </section>
     );
   }
@@ -34,8 +34,9 @@ class UserPage extends Component {
   }
 
   fetchUser = () => {
-    const { username } = this.props;
-    api.getUser(username).then(user => {
+    const author = this.props.username;
+
+    api.getUser(author).then(user => {
       this.setState({ user, isLoading: false });
     });
   };
