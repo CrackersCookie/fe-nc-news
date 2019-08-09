@@ -8,8 +8,7 @@ class ArticleSorter extends Component {
   state = {
     sort_by: "created_at",
     order: "desc",
-    p: 1,
-    error: null
+    p: 1
   };
 
   render() {
@@ -34,9 +33,6 @@ class ArticleSorter extends Component {
       value ? (currentState.sort_by = value) : (currentState.order = name);
       fetchArticles(currentState);
       return currentState;
-    }).catch(({ response }) => {
-      const error = { status: response.status, msg: response.data.msg };
-      this.setState({ error, isLoading: false });
     });
   };
 }

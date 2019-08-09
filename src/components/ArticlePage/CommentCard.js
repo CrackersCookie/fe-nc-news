@@ -7,7 +7,7 @@ import userIcon from "@iconify/icons-fa-regular/user";
 import tearOffCalendar from "@iconify/icons-noto/tear-off-calendar";
 import { Link } from "@reach/router";
 
-const CommentCard = ({ comment, username, removeFunction }) => {
+const CommentCard = ({ comment, loggedInUser, removeFunction }) => {
   const { body, votes, author, created_at, comment_id } = comment;
   const date = new Date(created_at).toLocaleDateString();
 
@@ -19,7 +19,7 @@ const CommentCard = ({ comment, username, removeFunction }) => {
             votes={votes}
             comment_id={comment_id}
             author={author}
-            username={username}
+            loggedInUser={loggedInUser}
           />
         </div>
         <div className={styles.commentBody}>
@@ -33,7 +33,7 @@ const CommentCard = ({ comment, username, removeFunction }) => {
               <Icon icon={tearOffCalendar} /> {date}
             </p>
           </div>
-          {author === username && (
+          {author === loggedInUser && (
             <DeleteButton id={comment_id} removeFunction={removeFunction} />
           )}
         </div>

@@ -77,7 +77,7 @@ class CreateArticleForm extends Component {
 
   handleSubmit = e => {
     const { title, body, topic } = this.state;
-    const author = this.props.username;
+    const author = this.props.loggedInUser;
     e.preventDefault();
     api
       .postArticle({ author, title, body, topic })
