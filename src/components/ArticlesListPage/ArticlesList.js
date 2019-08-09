@@ -67,7 +67,6 @@ class ArticlesList extends Component {
   };
 
   fetchArticles = query => {
-    console.log(this.props);
     const { path, topic, author } = this.props;
     let { p } = this.state;
     if (query && query.p) p = 1;

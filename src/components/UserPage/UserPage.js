@@ -12,6 +12,7 @@ class UserPage extends Component {
 
   render() {
     const { user, isLoading } = this.state;
+    const loggedInUser = this.props;
     if (isLoading) return <LoadingSpinner />;
     const { username, name, avatar_url } = user;
 
@@ -24,7 +25,7 @@ class UserPage extends Component {
             <img src={avatar_url} alt="profile" className={styles.shake} />
           </div>
         </div>
-        <ArticlesList author={username} username={username} />
+        <ArticlesList author={username} username={loggedInUser} />
       </section>
     );
   }

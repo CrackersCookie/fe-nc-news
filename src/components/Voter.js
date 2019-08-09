@@ -29,7 +29,7 @@ class Voter extends Component {
         <p className={styles.voteCount}>
           <Icon icon={thumbsUp} /> {votes + voteChange}
         </p>
-        {username && (
+        {username && username !== author && (
           <button
             className={styles.button}
             onClick={() => this.handleVotes(-1)}
