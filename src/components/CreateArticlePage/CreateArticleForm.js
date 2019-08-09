@@ -10,8 +10,7 @@ class CreateArticleForm extends Component {
     body: "",
     topic: "select topic",
     error: null,
-    bodyCharacterLimit: 5000,
-    error: null
+    bodyCharacterLimit: 5000
   };
 
   render() {

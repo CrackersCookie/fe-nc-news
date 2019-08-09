@@ -35,7 +35,7 @@ class App extends Component {
         <Nav />
 
         <Router>
-          <HomePage path="/" />
+          <HomePage path="/" loggedInUser={loggedInUser} />
           <ArticlesListPage path="/articles" loggedInUser={loggedInUser} />
           <ArticlesListPage path="/topics/:topic" loggedInUser={loggedInUser} />
           <ArticlePage
