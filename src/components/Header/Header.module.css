@@ -18,6 +18,24 @@
   background-image: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
 }
 
+.flexBox {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.buttonPost {
+  float: left;
+  margin: 0.3em 0.3em;
+  font-size: 1em;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  border-radius: 0.5em;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+  background-image: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+}
+
 .userHeader {
   text-align: right;
 }
@@ -34,5 +52,12 @@
 .image {
   max-width: 12rem;
   max-height: 12rem;
-  margin-left: 1rem;
+  margin-left: 0rem;
+}
+
+@media (max-width: 600px) {
+  img {
+    max-width: 8rem;
+    max-height: 8rem;
+  }
 }

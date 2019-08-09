@@ -14,13 +14,14 @@ class UserPage extends Component {
     const { user, isLoading } = this.state;
     if (isLoading) return <LoadingSpinner />;
     const { username, name, avatar_url } = user;
+
     return (
       <section>
         <div className={styles.section}>
           <div className={styles.user}>
             <h3>name: {name}</h3>
             <p>username: {username}</p>
-            <img src={avatar_url} alt="profile" className={styles.image} />
+            <img src={avatar_url} alt="profile" className={styles.shake} />
           </div>
         </div>
         <ArticlesList username={username} />

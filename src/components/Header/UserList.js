@@ -6,7 +6,7 @@ const UserList = ({ username, setSelectedUser, users }) => {
   return (
     <>
       <form className={styles.formSelectUser}>
-        <label className={styles.label}>select: </label>
+        <label className={styles.label}>user: </label>
         <select
           className={styles.select}
           value={username}

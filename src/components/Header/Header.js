@@ -9,14 +9,16 @@ import mcnews from "../../Images/mc-news.png";
 const Header = ({ username, setSelectedUser, users }) => {
   return (
     <header className={styles.header}>
-      <img src={mcnews} alt="mc-news-logo" className={styles.image} />
+      <div className={styles.flexBox}>
+        <img src={mcnews} alt="mc-news-logo" className={styles.image} />
+        <button className={styles.buttonPost}>
+          <Link to="/article">Post Article</Link>
+        </button>
+      </div>
       <div className={styles.userHeader}>
         {username && (
           <>
             <div className={styles.buttonContainer}>
-              <button className={styles.button}>
-                <Link to="/article">Post Article</Link>
-              </button>
               <button
                 className={styles.button}
                 value={null}
