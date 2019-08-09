@@ -24,7 +24,7 @@ class UserPage extends Component {
             <img src={avatar_url} alt="profile" className={styles.shake} />
           </div>
         </div>
-        <ArticlesList author={username} />
+        <ArticlesList author={username} username={username} />
       </section>
     );
   }

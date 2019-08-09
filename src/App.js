@@ -40,7 +40,7 @@ class App extends Component {
           <ArticlesListPage path="/topics/:topic" username={username} />
           <ArticlePage path="/articles/:article_id" username={username} />
           <CreateArticlePage path="/article" username={username} />
-          <UserPage path="/users/:username" />
+          <UserPage path="/users/:username" username={username} />
           <AllUsersPage path="/users" users={users} />
           <CreateUserPage path="/user" />
           <ErrorDisplay default status={404} msg={"Route not found"} />
