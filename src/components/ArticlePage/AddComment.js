@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import * as api from "../../api";
 import styles from "./AddComment.module.css";
+import ErrorDisplay from "../ErrorDisplay";
 
 class AddComment extends Component {
   state = {
     comment: "",
-    characterLimit: 1000
+    characterLimit: 1000,
+    error: null
   };
   render() {
-    const { comment, characterLimit } = this.state;
+    const { comment, characterLimit, error } = this.state;
+    if (error) return <ErrorDisplay status={error.status} msg={error.msg} />;
 
     return (
       <>
@@ -50,10 +53,16 @@ class AddComment extends Component {
     const { comment } = this.state;
     const { username, article_id } = this.props;
     e.preventDefault();
-    api.postComment({ username, body: comment, article_id }).then(comment => {
-      this.props.addComment(comment);
-      this.setState({ comment: "" });
-    });
+    api
+      .postComment({ username, body: comment, article_id })
+      .then(comment => {
+        this.props.addComment(comment);
+        this.setState({ comment: "" });
+      })
+      .catch(({ response }) => {
+        const error = { status: response.status, msg: response.data.msg };
+        this.setState({ error, isLoading: false });
+      });
   };
 }
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styles from "./CreateArticleForm.module.css";
 import * as api from "../../api";
 import { navigate } from "@reach/router";
+import ErrorDisplay from "../ErrorDisplay";
 
 class CreateArticleForm extends Component {
   state = {
@@ -9,11 +10,13 @@ class CreateArticleForm extends Component {
     body: "",
     topic: "",
     error: null,
-    bodyCharacterLimit: 5000
+    bodyCharacterLimit: 5000,
+    error: null
   };
 
   render() {
-    const { title, body, bodyCharacterLimit, topic } = this.state;
+    const { title, body, bodyCharacterLimit, topic, error } = this.state;
+    if (error) return <ErrorDisplay status={error.status} msg={error.msg} />;
 
     return (
       <article className={styles.article}>

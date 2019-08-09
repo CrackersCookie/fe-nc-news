@@ -2,17 +2,22 @@ import React, { Component } from "react";
 import styles from "./CreateUserForm.module.css";
 import * as api from "../../api";
 import { navigate } from "@reach/router";
+import profileAssets from "../Assets/profileImages.js";
+import ErrorDisplay from "../ErrorDisplay";
 
 class CreateUserForm extends Component {
   state = {
     name: "",
     username: "",
-    avatar_url: "",
+    avatar_url:
+      "http://icons.iconarchive.com/icons/fasticon/cat/256/Cat-Black-icon.png",
+    profileImages: profileAssets,
     error: null
   };
 
   render() {
-    const { name, username, avatar_url } = this.state;
+    const { name, username, avatar_url, profileImages, error } = this.state;
+    if (error) return <ErrorDisplay status={error.status} msg={error.msg} />;
 
     return (
       <article className={styles.user}>
@@ -33,15 +38,22 @@ class CreateUserForm extends Component {
             placeholder="Username..."
             required
           />
-          <input
+          <select
             value={avatar_url}
-            onChange={this.handleTextChange}
-            type="text"
-            name="avatar_url"
-            placeholder="Please add a link to your profile image..."
-          />
+            onChange={this.handleOptionChange}
+            className={styles.select}
+          >
+            {profileImages.map(profile => {
+              return (
+                <option key={profile.image} value={profile.image}>
+                  {profile.name}
+                </option>
+              );
+            })}
+          </select>
           <input type="submit" value="Submit" />
         </form>
+        <img src={avatar_url} alt="selected profile" />
       </article>
     );
   }
@@ -50,13 +62,16 @@ class CreateUserForm extends Component {
     this.setState({ [name]: value });
   };
 
+  handleOptionChange = ({ target: { value } }) => {
+    if (value) this.setState({ avatar_url: value });
+  };
+
   handleSubmit = e => {
     const { name, username, avatar_url } = this.state;
     e.preventDefault();
     api
       .postUser({ name, username, avatar_url })
       .then(user => {
-        console.log(user);
         navigate(`/users/${user.username}`);
       })
       .catch(({ response }) => {

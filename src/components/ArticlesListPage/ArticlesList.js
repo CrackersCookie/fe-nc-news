@@ -77,7 +77,7 @@ class ArticlesList extends Component {
       .getArticles(queries)
       .then(({ articles, total_count }) => {
         const pMax = Math.ceil(total_count / 10);
-        this.setState({ articles, isLoading: false, pMax, p });
+        this.setState({ articles, isLoading: false, pMax, p, error: null });
       })
       .catch(({ response }) => {
         const error = { status: response.status, msg: response.data.msg };
