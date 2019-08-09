@@ -93,9 +93,10 @@ label {
 }
 
 .button {
+  align-self: center;
   margin-right: 10%;
   font-size: 1em;
-  width: 8em;
+  max-width: 60%;
   padding: 0.6em 0.5em 0.5em 0.5em;
   border-radius: 0.5em;
   background-color: #fff;
@@ -110,4 +111,10 @@ label {
 
 .button:active {
   background-color: rgb(59, 153, 252);
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

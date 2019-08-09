@@ -47,15 +47,17 @@ class CreateArticleForm extends Component {
             placeholder="Write your article here..."
             required
           />
-          <p className={styles.characters}>
-            characters remaing: {bodyCharacterLimit - body.length}
-          </p>
-          <input
-            className={styles.button}
-            type="submit"
-            value="Submit"
-            disabled={topic === "select topic"}
-          />
+          <div className={styles.flex}>
+            <p className={styles.characters}>
+              characters remaing: {bodyCharacterLimit - body.length}
+            </p>
+            <input
+              className={styles.button}
+              type="submit"
+              value="Submit"
+              disabled={topic === "select topic"}
+            />
+          </div>
         </form>
       </article>
     );
