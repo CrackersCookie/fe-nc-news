@@ -30,7 +30,9 @@ const ArticleCard = ({ article, loggedInUser }) => {
           />
         </div>
         <div className={styles.articleBody}>
-          <h3>{title}</h3>
+          <Link to={`/articles/${article_id}`}>
+            <h3>{title}</h3>
+          </Link>
           <p>
             <Icon icon={userIcon} />
             <Link to={`/users/${author}`}>{author}</Link>
