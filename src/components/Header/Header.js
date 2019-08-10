@@ -10,7 +10,9 @@ const Header = ({ loggedInUser, setSelectedUser, users }) => {
   return (
     <header className={styles.header}>
       <div className={styles.flexBox}>
-        <img src={mcnews} alt="mc-news-logo" className={styles.image} />
+        <Link to="/">
+          <img src={mcnews} alt="mc-news-logo" className={styles.image} />
+        </Link>
         <button className={styles.buttonPost}>
           <Link to="/article">Post Article</Link>
         </button>
