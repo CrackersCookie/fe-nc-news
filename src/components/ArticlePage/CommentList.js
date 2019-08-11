@@ -28,7 +28,7 @@ class CommentList extends Component {
             addComment={this.addComment}
           />
         ) : (
-          <h3>please log in to leave a comment</h3>
+          <h3 className={styles.comments}>please log in to leave a comment</h3>
         )}
         {!comments.length ? (
           <h3>no comments available</h3>
