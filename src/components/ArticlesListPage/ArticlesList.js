@@ -25,7 +25,7 @@ class ArticlesList extends Component {
     return (
       <section className={styles.articlesList}>
         {path && <ArticleSorter fetchArticles={this.fetchArticles} />}
-        {location.state && location.state.article_id && (
+        {location && location.state && location.state.article_id && (
           <p className={styles.deleted}>article succesfully deleted</p>
         )}
         <ul className={styles.unorderedList}>
