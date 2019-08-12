@@ -12,44 +12,9 @@ export const getArticles = async queries => {
   return { articles, total_count };
 };
 
-export const getTopics = async () => {
-  const URL = "topics";
-  const {
-    data: { topics }
-  } = await request.get(URL);
-  return topics;
-};
-
-export const getUsers = async () => {
-  const URL = "users";
-  const {
-    data: { users }
-  } = await request.get(URL);
-  return users;
-};
-
-export const getUser = async username => {
-  const URL = `users/${username}`;
-  const {
-    data: { user }
-  } = await request.get(URL);
-  return user;
-};
-
-export const getArticle = async article_id => {
-  const URL = `articles/${article_id}`;
-  const {
-    data: { article }
-  } = await request.get(URL);
-  return article;
-};
-
-export const getComments = async article_id => {
-  const URL = `articles/${article_id}/comments`;
-  const {
-    data: { comments }
-  } = await request.get(URL);
-  return comments;
+export const getData = async URL => {
+  const { data } = await request.get(URL);
+  return data;
 };
 
 export const postComment = async ({ body, username, article_id }) => {
@@ -74,18 +39,6 @@ export const postUser = async ({ name, username, avatar_url }) => {
   } = await request.post(URL, { name, username, avatar_url });
   return user;
 };
-
-// export const deleteComment = async comment_id => {
-//   const URL = `/comments/${comment_id}`;
-//   const { response } = await request.delete(URL);
-//   return response;
-// };
-
-// export const deleteArticle = async article_id => {
-//   const URL = `articles/${article_id}`;
-//   const { response } = await request.delete(URL);
-//   return response;
-// };
 
 export const deleteData = async URL => {
   const { response } = await request.delete(URL);

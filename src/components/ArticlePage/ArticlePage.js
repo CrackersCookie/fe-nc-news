@@ -43,9 +43,10 @@ class ArticlePage extends Component {
 
   fetchArticle = () => {
     const { article_id } = this.props;
+    const URL = `articles/${article_id}`;
     api
-      .getArticle(article_id)
-      .then(article => {
+      .getData(URL)
+      .then(({ article }) => {
         this.setState({ article, isLoading: false });
       })
       .catch(({ response }) => {

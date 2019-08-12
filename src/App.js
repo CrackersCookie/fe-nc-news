@@ -59,7 +59,10 @@ class App extends Component {
   }
 
   fetchUsers = () => {
-    api.getUsers().then(users => this.setState({ users, isLoading: false }));
+    const URL = "users";
+    api
+      .getData(URL)
+      .then(({ users }) => this.setState({ users, isLoading: false }));
   };
 
   setSelectedUser = ({ target: { value } }) => {

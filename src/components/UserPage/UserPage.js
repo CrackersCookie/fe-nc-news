@@ -36,7 +36,8 @@ class UserPage extends Component {
 
   fetchUser = () => {
     const author = this.props.username;
-    api.getUser(author).then(user => {
+    const URL = `users/${author}`;
+    api.getData(URL).then(({ user }) => {
       this.setState({ user, isLoading: false });
     });
   };

@@ -62,7 +62,8 @@ class CommentList extends Component {
 
   fetchComments = () => {
     const { article_id } = this.props;
-    api.getComments(article_id).then(comments => {
+    const URL = `articles/${article_id}/comments`;
+    api.getData(URL).then(({ comments }) => {
       this.setState({ comments, isLoading: false });
     });
   };

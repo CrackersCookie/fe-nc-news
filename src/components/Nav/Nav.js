@@ -38,9 +38,10 @@ class Nav extends Component {
   }
 
   fetchTopics = () => {
+    const URL = "topics";
     api
-      .getTopics()
-      .then(topics => {
+      .getData(URL)
+      .then(({ topics }) => {
         this.setState({ topics, isLoading: false });
       })
       .catch(({ response }) => {
