@@ -14,7 +14,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cy:open": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,6 +39,7 @@
     "@iconify/icons-noto": "^1.0.2",
     "@iconify/icons-octicon": "^1.0.0",
     "@iconify/icons-uil": "^1.0.2",
-    "@iconify/react": "^1.1.1"
+    "@iconify/react": "^1.1.1",
+    "cypress": "^3.4.1"
   }
 }

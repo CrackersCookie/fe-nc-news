@@ -14,7 +14,7 @@ const Header = ({ loggedInUser, setSelectedUser, users }) => {
           <img src={mcnews} alt="mc-news-logo" className={styles.image} />
         </Link>
         {loggedInUser && (
-          <button className={styles.buttonPost}>
+          <button className={styles.buttonPost} data-cy="post-article">
             <Link to="/article">Post Article</Link>
           </button>
         )}
@@ -27,11 +27,12 @@ const Header = ({ loggedInUser, setSelectedUser, users }) => {
                 className={styles.button}
                 value={null}
                 onClick={e => setSelectedUser(e)}
+                data-cy="log-out"
               >
                 log out
               </button>
             </div>
-            <h4 className={styles.username}>
+            <h4 className={styles.username} data-cy="user">
               <Icon icon={userIcon} /> {loggedInUser}
             </h4>
           </>
