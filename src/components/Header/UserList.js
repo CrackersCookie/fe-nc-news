@@ -11,6 +11,7 @@ const UserList = ({ loggedInUser, setSelectedUser, users }) => {
           className={styles.select}
           value={loggedInUser}
           onChange={setSelectedUser}
+          data-cy="select"
         >
           {users.map(user => {
             return <User key={user.username} user={user} />;
