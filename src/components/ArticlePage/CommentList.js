@@ -75,8 +75,9 @@ class CommentList extends Component {
   };
 
   removeFunction = comment_id => {
+    const URL = `/comments/${comment_id}`;
     api
-      .deleteComment(comment_id)
+      .deleteData(URL)
       .then(() => {
         this.setState(({ comments }) => {
           const filteredComments = comments.filter(

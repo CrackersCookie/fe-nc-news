@@ -55,8 +55,9 @@ class ArticlePage extends Component {
   };
 
   removeFunction = (article_id, topic) => {
+    const URL = `articles/${article_id}`;
     api
-      .deleteArticle(article_id)
+      .deleteData(URL)
       .then(() => {
         navigate(`/topics/${topic}`, { state: { article_id } });
       })
