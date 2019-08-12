@@ -15,8 +15,8 @@ class CreateArticleForm extends Component {
 
   render() {
     const { title, body, bodyCharacterLimit, topic, error } = this.state;
+    const { loggedInUser } = this.props;
     if (error) return <ErrorDisplay status={error.status} msg={error.msg} />;
-
     return (
       <article className={styles.article}>
         <form onSubmit={this.handleSubmit} className={styles.postForm}>
@@ -55,7 +55,7 @@ class CreateArticleForm extends Component {
               className={styles.button}
               type="submit"
               value="Submit"
-              disabled={topic === "select topic"}
+              disabled={topic === "select topic" || !loggedInUser}
             />
           </div>
         </form>

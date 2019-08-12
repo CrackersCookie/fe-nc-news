@@ -13,9 +13,11 @@ const Header = ({ loggedInUser, setSelectedUser, users }) => {
         <Link to="/">
           <img src={mcnews} alt="mc-news-logo" className={styles.image} />
         </Link>
-        <button className={styles.buttonPost}>
-          <Link to="/article">Post Article</Link>
-        </button>
+        {loggedInUser && (
+          <button className={styles.buttonPost}>
+            <Link to="/article">Post Article</Link>
+          </button>
+        )}
       </div>
       <div className={styles.userHeader}>
         {loggedInUser && (
